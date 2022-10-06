@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class Seed : MonoBehaviour
 {
-    
     private bool hitSoil = false; // if the seed has hit soil
     public LayerMask soilLayer; // all soils
     public Transform plantLocation;  // Point to check plant range from
@@ -12,16 +11,12 @@ public class Seed : MonoBehaviour
     void Update()
     {
         
-        // P = Plant Seed
-        if (Input.GetKeyDown(KeyCode.P)) 
+        if (gameObject.GetComponent<Collider2D>().IsTouchingLayers(soilLayer))
         {
-            Collider2D[] hitSoils = Physics2D.OverlapCircleAll(plantLocation.position, plantRange, soilLayer);
-            for (int i = 0; i < hitSoils.Length; i++)
-            {
-                Soil soil = hitSoils[i].gameObject.GetComponent<Soil>(); 
-                soil.PlantSeed();
-                Destroy(gameObject);
-            }
+            Debug.Log("Hit Soil!");
+            // Soil soil = hitSoils[i].gameObject.GetComponent<Soil>();
+            // soil.PlantSeed();
+            // Destroy(gameObject);            
         }
 
     }
