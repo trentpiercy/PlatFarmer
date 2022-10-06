@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class Soil : MonoBehaviour
 {
 
@@ -13,12 +17,13 @@ public class Soil : MonoBehaviour
 
     void PlantSeed()
     {
-        hasSeed = true
+        hasSeed = true;
         Debug.Log("Planted Seed.");
     }
     
-    void WaterSoil( {
-        hasWater = true
+    void WaterSoil()
+    {
+        hasWater = true;
         Debug.Log("Watered Soil.");
     }
         
