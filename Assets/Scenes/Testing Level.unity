@@ -317,7 +317,8 @@ Transform:
   m_LocalPosition: {x: 3.868, y: -0.56999993, z: 0}
   m_LocalScale: {x: 0.30334324, y: 2.8669455, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1115944737}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -380,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5673c29345fd645dbac2a78b954f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  choppedTransform: {fileID: 1115944737}
 --- !u!1 &947873318
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +413,37 @@ Transform:
   m_Father: {fileID: 1289087775}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1115944736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115944737}
+  m_Layer: 0
+  m_Name: Chopped
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1115944737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115944736}
+  m_LocalRotation: {x: -0, y: -0, z: -0.38118613, w: 0.9244983}
+  m_LocalPosition: {x: 2.2, y: -0.11, z: 0}
+  m_LocalScale: {x: 0.19237441, y: 1.7992053, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 358520557}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -44.814}
 --- !u!1 &1251671775
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d92767b51bf4034a864886b5928657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trees:
+  treesLayer:
     serializedVersion: 2
     m_Bits: 8
   chopLocation: {fileID: 1998642061}

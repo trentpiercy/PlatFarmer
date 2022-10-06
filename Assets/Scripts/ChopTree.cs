@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class ChopTree : MonoBehaviour
 { 
-    public LayerMask trees;
-    public Transform chopLocation;
-    public float chopRange;
+    public LayerMask treesLayer;
 
-    private Rigidbody2D body;
-    private Quaternion target;
+    // Point to check chop range from
+    public Transform chopLocation;
+
+    // How far can the player reach to chop a tree
+    public float chopRange;
  
     private void Update()
     {
         if (Input.GetKey(KeyCode.F))
         {
-            
-            Collider2D[] hitTrees = Physics2D.OverlapCircleAll( chopLocation.position, chopRange, trees );
-
+            Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
             for (int i = 0; i < hitTrees.Length; i++)
             {
-                hitTrees[i].gameObject.GetComponent<TreeFall>().fallDown();
+                hitTrees[i].gameObject.GetComponent<TreeFall>().FallDown();
             }
         }            
     }

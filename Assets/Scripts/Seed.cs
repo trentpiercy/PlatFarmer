@@ -11,14 +11,14 @@ public class Seed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canpickup = false;    
+        canpickup = false;
         hasItem = false;
     }
  
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(canpickup);
+        //Debug.Log(canpickup);
         if(canpickup == true && Input.GetKeyDown("e")) // if you enter the collider of the object
         {
             Debug.Log("Picked up!");
