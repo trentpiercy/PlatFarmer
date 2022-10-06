@@ -15,13 +15,13 @@ public class Soil : MonoBehaviour
     private bool chopTree = false;
     // TODO: list of trees
 
-    void PlantSeed()
+    public void PlantSeed()
     {
         hasSeed = true;
         Debug.Log("Planted Seed.");
     }
     
-    void WaterSoil()
+    public void WaterSoil()
     {
         hasWater = true;
         Debug.Log("Watered Soil.");
