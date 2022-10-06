@@ -16,7 +16,7 @@ public class Seed : MonoBehaviour
             Debug.Log("Hit Soil!");
             // Soil soil = hitSoils[i].gameObject.GetComponent<Soil>();
             // soil.PlantSeed();
-            // Destroy(gameObject);            
+            Destroy(gameObject);            
         }
 
     }
