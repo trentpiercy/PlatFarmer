@@ -14,7 +14,7 @@ public class ChopTree : MonoBehaviour
  
     private void Update()
     {
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
             for (int i = 0; i < hitTrees.Length; i++)
