@@ -8,7 +8,6 @@ public class HoldObject : MonoBehaviour
 
     // The gameobject you collided with
     private GameObject collidedWith;
-
     private bool canpickup = false;
     private bool hasItem = false;
 
@@ -25,6 +24,10 @@ public class HoldObject : MonoBehaviour
             collidedWith.transform.parent = playerHands.transform; //makes the object become a child of the parent so that it moves with the hands
 
             hasItem = true;
+
+            if (collidedWith.CompareTag("Axe")){
+                collidedWith.GetComponent<ChopTree>().enabled = true;
+            }
         }
         else if (hasItem && Input.GetKeyDown(KeyCode.F)) // drop
         {
@@ -33,7 +36,9 @@ public class HoldObject : MonoBehaviour
             Debug.Log("Put down!");
             //collidedWith.GetComponent<Rigidbody2D>().isKinematic = false;
             collidedWith.transform.parent = null; // make the object no be a child of the hands
-
+            if (collidedWith.CompareTag("Axe")){
+                collidedWith.GetComponent<ChopTree>().enabled = false;
+            }
             hasItem = false;
         }
     }
@@ -41,7 +46,7 @@ public class HoldObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (hasItem) return;
-        if (other.gameObject.CompareTag("object"))
+        if (other.gameObject.tag == "object" || other.gameObject.tag == "Axe")
         {
             canpickup = true;
             collidedWith = other.gameObject;
