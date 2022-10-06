@@ -5,13 +5,13 @@ public class HoldObject : MonoBehaviour
 {
     // Reference to where you want your object to go
     public GameObject playerHands;
-    
+
     // The gameobject you collided with
     private GameObject collidedWith;
 
     private bool canpickup = false;
     private bool hasItem = false;
- 
+
 
     void Update()
     {
@@ -25,7 +25,8 @@ public class HoldObject : MonoBehaviour
             collidedWith.transform.parent = playerHands.transform; //makes the object become a child of the parent so that it moves with the hands
 
             hasItem = true;
-        } else if (hasItem && Input.GetKeyDown(KeyCode.F)) // drop
+        }
+        else if (hasItem && Input.GetKeyDown(KeyCode.F)) // drop
         {
             Debug.Assert(collidedWith != null);
 
@@ -37,18 +38,18 @@ public class HoldObject : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (hasItem) return;
         if (other.gameObject.CompareTag("object"))
         {
-            canpickup = true;  
+            canpickup = true;
             collidedWith = other.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        canpickup = false; 
+        canpickup = false;
     }
 }

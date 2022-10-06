@@ -10,7 +10,8 @@ public class TreeFall : MonoBehaviour
     // Has this tree been chopped yet
     private bool chopped = false;
 
-    public void FallDown(){
+    public void FallDown()
+    {
         if (chopped) return;
 
         Debug.Assert(choppedTransform != null);

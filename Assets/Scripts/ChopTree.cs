@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChopTree : MonoBehaviour
-{ 
+{
     public LayerMask treesLayer;
 
     // Point to check chop range from
@@ -11,7 +11,7 @@ public class ChopTree : MonoBehaviour
 
     // How far can the player reach to chop a tree
     public float chopRange;
- 
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -21,6 +21,6 @@ public class ChopTree : MonoBehaviour
             {
                 hitTrees[i].gameObject.GetComponent<TreeFall>().FallDown();
             }
-        }            
+        }
     }
 }
