@@ -6,6 +6,7 @@ TagManager:
   tags:
   - object
   - Axe
+  - barn
   layers:
   - Default
   - TransparentFX
