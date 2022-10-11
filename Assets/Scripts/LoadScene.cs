@@ -5,17 +5,16 @@ using UnityEngine.SceneManagement;
 
 
 public class LoadScene : MonoBehaviour
-{
-    //private bool atbarn = false;
-      
+{     
+    public string nextLevel;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "barn")
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("At barn!");
-            //atbarn = true;
-            Debug.Log("Loading new scene...");
-            SceneManager.LoadScene("Testing Level 2",LoadSceneMode.Single); //change to generalize
+
+            SceneManager.LoadScene(nextLevel,LoadSceneMode.Single);
         }
     }
 }

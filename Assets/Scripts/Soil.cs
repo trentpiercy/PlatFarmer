@@ -4,57 +4,51 @@ using UnityEngine;
 
 public class Soil : MonoBehaviour
 {
+    // Has a seed been planted
+    public bool hasSeed = false;
 
-    // if the soil has a seed planted
-    private bool hasSeed = false; // fertile soil
-    
-    // if the soil is watered
-    private bool hasWater = false; // watered soil
+    // Is the soil watered
+    public bool hasWater = false;
 
-    private bool hasTree = false;
-    private bool chopTree = false;
-    // TODO: list of trees
+    // Only allow tree to be grown once
+    public bool treeGrown = false;
 
     public void PlantSeed()
     {
         hasSeed = true;
         Debug.Log("Planted Seed.");
+
+        TryGrowTree();
     }
     
     public void WaterSoil()
     {
         hasWater = true;
         Debug.Log("Watered Soil.");
+
+        TryGrowTree();
     }
-        
+
+    private void TryGrowTree()
+    {
+        // Quit if already grown
+        if (treeGrown) return;
+
+        // Grown if both seed and water
+        if (hasSeed && hasWater)
+        {
+            treeGrown = true;
+
+            Debug.Log("Soil has seed and water! Planting tree");
+
+            // TODO spawn a tree object
+
+            Debug.Log("Tree is grown.");
+        }
+    }
+
+
     void Update()
     {
-        
-        if (hasSeed && hasWater) // if you enter the collider of the object
-        {
-            Debug.Log("Soil has seed and water! Planting tree");
-            // TODO: grow tree
-            Debug.Log("Tree is grown.");
-            
-        } else if (hasSeed)
-        {
-            Debug.Log("Soil has seed!");
-            // TODO: change display to fertile soil
-            Debug.Log("Soil has turned into fertile soil.");
-        } else if (hasWater)
-        {
-            Debug.Log("Soil has water!");
-            // TODO: change display to watered soil
-            Debug.Log("Soil has turned into watered soil.");
-        }
-        else if (hasTree && chopTree)
-        {
-            // TODO: chop tree
-            // TOOD: remove from list of trees
-        }
-        
-        
-
     }
-    
 }
