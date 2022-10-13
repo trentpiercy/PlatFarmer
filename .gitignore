@@ -72,4 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Hidden Idea folder for Rider
-/[Aa]ssets/[Ss]cripts/.idea/
+*.idea/
