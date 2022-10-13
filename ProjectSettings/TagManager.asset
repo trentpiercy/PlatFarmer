@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - object
   - Axe
   - barn
   - Ladder
+  - Seed
   layers:
   - Default
   - TransparentFX
@@ -18,8 +18,8 @@ TagManager:
   - Soil
   - Ladder
   - Player
+  - IgnorePlayer
   - Items
-  - 
   - 
   - 
   - 
