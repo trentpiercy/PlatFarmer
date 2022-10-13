@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class Soil : MonoBehaviour
 {
+    public GameObject tree;
     // Has a seed been planted
     public bool hasSeed = false;
 
@@ -38,10 +40,8 @@ public class Soil : MonoBehaviour
         if (hasSeed && hasWater)
         {
             treeGrown = true;
-
+            Instantiate(tree, new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z), Quaternion.identity);
             Debug.Log("Soil has seed and water! Planting tree");
-
-            // TODO spawn a tree object
 
             Debug.Log("Tree is grown.");
         }
