@@ -19,8 +19,15 @@ public class HoldObject : MonoBehaviour
             Debug.Assert(collidedWith != null);
 
             Debug.Log("Picked up!");
-
-            if (collidedWith.CompareTag("Seed"))
+            
+            if (collidedWith.CompareTag("Water"))
+            {
+                Debug.Log("Picking up water");
+                // If collided with water, hold the parent object
+                collidedWith = collidedWith.transform.parent.gameObject;
+                collidedWith.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            }
+            else if (collidedWith.CompareTag("Seed"))
             {
                 Debug.Log("Picking up seed");
                 // If collided with seed, hold the parent object
@@ -48,6 +55,10 @@ public class HoldObject : MonoBehaviour
             if (collidedWith.CompareTag("Axe")){
                 collidedWith.GetComponent<ChopTree>().enabled = false;
             } else if (collidedWith.CompareTag("Seed"))
+            {
+                collidedWith.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            }
+            else if (collidedWith.CompareTag("Water"))
             {
                 collidedWith.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }

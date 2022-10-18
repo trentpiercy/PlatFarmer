@@ -8,6 +8,7 @@ TagManager:
   - barn
   - Ladder
   - Seed
+  - Water
   layers:
   - Default
   - TransparentFX
