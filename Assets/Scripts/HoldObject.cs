@@ -35,16 +35,19 @@ public class HoldObject : MonoBehaviour
                 // If collided with seed, hold the parent object
                 collidedWith = collidedWith.transform.parent.gameObject;
                 collidedWith.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            } else if (collidedWith.CompareTag("Axe"))
+            {
+                Debug.Log("Picking up axe");
+                collidedWith = collidedWith.transform.parent.gameObject;
+
+                collidedWith.GetComponent<ChopTree>().enabled = true;
+                collidedWith.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             }
 
             collidedWith.transform.position = playerHands.transform.position; // sets the position of the object to your hand position
             collidedWith.transform.parent = playerHands.transform; // makes the object become a child of the parent so that it moves with the hands
 
             hasItem = true;
-
-            if (collidedWith.CompareTag("Axe")){
-                collidedWith.GetComponent<ChopTree>().enabled = true;
-            }
         }
         else if (hasItem && Input.GetKeyDown(KeyCode.F)) // drop
         {
@@ -56,6 +59,7 @@ public class HoldObject : MonoBehaviour
             
             if (collidedWith.CompareTag("Axe")){
                 collidedWith.GetComponent<ChopTree>().enabled = false;
+                collidedWith.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             } else if (collidedWith.CompareTag("Seed"))
             {
                 collidedWith.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
