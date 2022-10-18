@@ -17,6 +17,7 @@ public class Soil : MonoBehaviour
 
     public void PlantSeed()
     {
+		gameObject.GetComponent<Renderer>().material.color = Color.green;
         hasSeed = true;
         Debug.Log("Planted Seed.");
 
@@ -25,6 +26,7 @@ public class Soil : MonoBehaviour
     
     public void WaterSoil()
     {
+		gameObject.GetComponent<Renderer>().material.color = Color.blue;
         hasWater = true;
         Debug.Log("Watered Soil.");
 
