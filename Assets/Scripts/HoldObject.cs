@@ -6,6 +6,8 @@ public class HoldObject : MonoBehaviour
     // Reference to where you want your object to go
     public GameObject playerHands;
 
+    public int itemLayer = 10;
+
     // The gameobject you collided with
     private GameObject collidedWith;
     private bool canpickup = false;
@@ -69,10 +71,11 @@ public class HoldObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Entered trigger, layer: " + other.gameObject.layer);
         if (hasItem) return;
-        if (other.gameObject.layer == 10) // Item layer
+        if (other.gameObject.layer == itemLayer) // Item layer
         {
-            //Debug.Log("Entered trigger");
+            Debug.Log("Trigger is item layer");
             canpickup = true;
             collidedWith = other.gameObject;
         }

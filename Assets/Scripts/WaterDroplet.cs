@@ -21,7 +21,7 @@ public class WaterDroplet : MonoBehaviour
 
         if (GetComponent<Collider2D>().IsTouchingLayers(soilLayer))
         {
-			Debug.Log("Hit water");
+			Debug.Log("Water hit soil");
             Collider2D[] hitSoils = Physics2D.OverlapCircleAll(waterLocation.position, waterRange, soilLayer);
             for (int i = 0; i < hitSoils.Length; i++)
             {
