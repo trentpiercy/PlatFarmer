@@ -1495,6 +1495,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6880770771281773410, guid: 47d5236d746f0714ca978cbadd97514c, type: 3}
+      propertyPath: nextLevel
+      value: Testing Level 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6880770771281773413, guid: 47d5236d746f0714ca978cbadd97514c, type: 3}
       propertyPath: m_Name
       value: Barn
