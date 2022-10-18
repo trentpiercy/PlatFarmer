@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2438801574285936759}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0, z: -0.08704431}
+  m_LocalPosition: {x: 0.48, y: 0, z: -0.08704431}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -318,11 +318,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_JumpForce: 400
   m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.02
+  m_MovementSmoothing: 0
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 73
   m_GroundCheck: {fileID: 2438801573189891548}
   m_CeilingCheck: {fileID: 2438801574413744224}
   m_CrouchDisableCollider: {fileID: 0}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2438801574991968486}
-  runSpeed: 20
+  runSpeed: 25
 --- !u!114 &2438801574991968472
 MonoBehaviour:
   m_ObjectHideFlags: 0
