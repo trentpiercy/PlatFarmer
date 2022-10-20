@@ -359,7 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHands: {fileID: 2438801574285936759}
-  itemLayer: 10
+  itemLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!50 &2438801574991968487
 Rigidbody2D:
   serializedVersion: 4
