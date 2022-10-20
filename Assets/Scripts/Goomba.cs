@@ -9,7 +9,7 @@ public class Goomba : MonoBehaviour
 
     public float moveSpeed = 2f;
 
-    private int direction = 1;
+    private int direction = -1;
 
     // Called when hit by player
     public void Attacked()
@@ -24,10 +24,12 @@ public class Goomba : MonoBehaviour
         if (transform.position.x < leftmost.position.x)
         {
             direction = 1;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         } 
         else if (transform.position.x > rightmost.position.x)
         {
             direction = -1;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
     }
 }
