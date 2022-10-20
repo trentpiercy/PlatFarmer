@@ -30,7 +30,7 @@ public class HoldObject : MonoBehaviour
 
                     if (heldItem.CompareTag("Axe"))
                     {
-                        heldItem.GetComponent<ChopTree>().enabled = true;
+                        heldItem.GetComponent<Axe>().enabled = true;
                     }
 
                     heldItem.transform.position = playerHands.transform.position; // sets the position of the object to your hand position
@@ -47,7 +47,7 @@ public class HoldObject : MonoBehaviour
                 heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 if (heldItem.CompareTag("Axe"))
                 {
-                    heldItem.GetComponent<ChopTree>().enabled = false;
+                    heldItem.GetComponent<Axe>().enabled = false;
                 }
 
                 heldItem = null;

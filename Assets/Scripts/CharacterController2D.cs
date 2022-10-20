@@ -34,12 +34,8 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
-		if (OnLandEvent == null)
-			OnLandEvent = new UnityEvent();
-
-		if (OnCrouchEvent == null)
-			OnCrouchEvent = new BoolEvent();
+		OnLandEvent ??= new UnityEvent();
+		OnCrouchEvent ??= new BoolEvent();
 	}
 
 	private void FixedUpdate()
@@ -59,11 +55,6 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
-
-		if (gameObject.GetComponent<Transform>().position.y < -20)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
 	}
 
 

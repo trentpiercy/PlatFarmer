@@ -9,6 +9,7 @@ TagManager:
   - Ladder
   - Seed
   - Water
+  - Goomba
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - IgnorePlayer
   - Items
   - CameraChange
-  - 
+  - Enemy
   - 
   - 
   - 

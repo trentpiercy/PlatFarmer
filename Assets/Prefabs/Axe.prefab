@@ -109,8 +109,11 @@ MonoBehaviour:
   treesLayer:
     serializedVersion: 2
     m_Bits: 8
+  enemiesLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   chopLocation: {fileID: 4895178177752414137}
-  chopRange: 0.5
+  chopRange: 0.7
 --- !u!212 &4895178177752414139
 SpriteRenderer:
   m_ObjectHideFlags: 0
