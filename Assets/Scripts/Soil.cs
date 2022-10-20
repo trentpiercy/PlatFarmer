@@ -15,9 +15,12 @@ public class Soil : MonoBehaviour
     // Only allow tree to be grown once
     public bool treeGrown = false;
 
+    public Color green = new(170, 255, 0);
+    public Color blue = Color.blue;
+
     public void PlantSeed()
     {
-		gameObject.GetComponent<Renderer>().material.color = Color.green;
+        GetComponent<SpriteRenderer>().color = green;
         hasSeed = true;
         Debug.Log("Planted Seed.");
 
@@ -26,7 +29,7 @@ public class Soil : MonoBehaviour
     
     public void WaterSoil()
     {
-		gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        GetComponent<SpriteRenderer>().color = blue;
         hasWater = true;
         Debug.Log("Watered Soil.");
 
@@ -50,7 +53,9 @@ public class Soil : MonoBehaviour
     }
 
 
-    void Update()
+    private void Start()
     {
+        if (hasSeed) PlantSeed();
+        if (hasWater) WaterSoil();
     }
 }

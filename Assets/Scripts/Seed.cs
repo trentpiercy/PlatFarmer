@@ -17,8 +17,6 @@ public class Seed : MonoBehaviour
 
     void Update()
     {
-        // TODO this should only run while held by player
-
         if (GetComponent<Collider2D>().IsTouchingLayers(soilLayer))
         {
             Debug.Log("Hit soil");
