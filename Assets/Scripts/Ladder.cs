@@ -7,7 +7,12 @@ public class Ladder : MonoBehaviour
     private bool isLadder;
     private bool isClimbing;
 
-    [SerializeField] private Rigidbody2D player;
+    private Rigidbody2D player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {

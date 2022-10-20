@@ -168,11 +168,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1289087772 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 2438801574991968487, guid: 42adb6dc0f33ac94ba67686e7cac9428, type: 3}
-  m_PrefabInstance: {fileID: 2438801574132896763}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438684594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8676766200221578070, guid: a452fa18314347947a4173fbe78b9ca0, type: 3}
@@ -1977,10 +1972,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ladder
       objectReference: {fileID: 0}
-    - target: {fileID: 8154053636773579275, guid: 3ef9b66f73d30db41b9768b939629084, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1289087772}
     - target: {fileID: 8154053636773579276, guid: 3ef9b66f73d30db41b9768b939629084, type: 3}
       propertyPath: m_RootOrder
       value: 7
