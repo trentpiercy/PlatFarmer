@@ -13,15 +13,19 @@ public class ChopTree : MonoBehaviour
     public float chopRange;
 
     private bool isChopping = false;
-    private float chopDegrees = 60;
-    private float delay = 0.2f;
+
+    // Angle to rotate axe to when chopping
+    private readonly float axeChopDegrees = 60;
+
+    // How long to show axe at axeChopDegrees
+    private readonly float animationDelay = 0.2f;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !isChopping){
+        if (Input.GetKeyDown(KeyCode.G) && !isChopping){
 
             isChopping = true;
-            transform.Rotate(new Vector3(0, 0, -chopDegrees));
+            transform.Rotate(new Vector3(0, 0, -axeChopDegrees));
 
             Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
             for (int i = 0; i < hitTrees.Length; i++)
@@ -35,9 +39,9 @@ public class ChopTree : MonoBehaviour
 
     IEnumerator ChopWait()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(animationDelay);
 
-        transform.Rotate(new Vector3(0, 0, chopDegrees));
+        transform.Rotate(new Vector3(0, 0, axeChopDegrees));
         isChopping = false;
     }
 }
