@@ -775,7 +775,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1473541916}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 336638019920fe948b9960b6f7847072, type: 2}
+  m_Material: {fileID: 6200000, guid: a2d4f5f52e11d484aa3889697efebecc, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5063,7 +5063,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 336638019920fe948b9960b6f7847072, type: 2}
+  m_Material: {fileID: 6200000, guid: a2d4f5f52e11d484aa3889697efebecc, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -5125,82 +5125,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04cd00a13df01994dbea5d7d5719890d, type: 3}
---- !u!1 &1553989918
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1553989921}
-  - component: {fileID: 1553989920}
-  - component: {fileID: 1553989919}
-  m_Layer: 11
-  m_Name: CameraShiftZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1553989919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553989918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ceb58858b41d42a882d360c879e99dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 169428632}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  zoomSpeed: 6
---- !u!61 &1553989920
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553989918}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4, y: 3}
-  m_EdgeRadius: 0
---- !u!4 &1553989921
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553989918}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: 0.26, z: 23.795368}
-  m_LocalScale: {x: 1.8415625, y: 1.5875, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1609612763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5607,3 +5531,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27c72f7701c885f459aa6a2bfc9e3ccf, type: 3}
+--- !u!1001 &3203782680371159291
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.795368
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842778, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203782681119842788, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 169428632}
+    - target: {fileID: 3203782681119842789, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}
+      propertyPath: m_Name
+      value: CameraShiftZone
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 82918697962e57b4ca0b29b62860c8f5, type: 3}

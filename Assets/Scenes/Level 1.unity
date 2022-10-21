@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c8521938f8f654ea6e314c03dfb227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
+  m_JumpForce: 450
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0
   m_AirControl: 1
@@ -918,7 +918,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1473541916}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 336638019920fe948b9960b6f7847072, type: 2}
+  m_Material: {fileID: 6200000, guid: a2d4f5f52e11d484aa3889697efebecc, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2214,7 +2214,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 336638019920fe948b9960b6f7847072, type: 2}
+  m_Material: {fileID: 6200000, guid: a2d4f5f52e11d484aa3889697efebecc, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
