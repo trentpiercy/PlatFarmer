@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class CameraGrow : MonoBehaviour
 {
-    public Camera cam;
     public LayerMask playerLayer;
 
     public float zoomSpeed = 6;
 
-    // Update is called once per frame
+    private Camera cam;
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
+
     void Update()
     {
         if (GetComponent<Collider2D>().IsTouchingLayers(playerLayer))
