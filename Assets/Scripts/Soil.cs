@@ -63,7 +63,12 @@ public class Soil : MonoBehaviour
 
     private void Start()
     {
-        if (hasSeed) PlantSeed();
-        if (hasWater) WaterSoil();
+        if (hasSeed)
+        {
+            GetComponent<SpriteRenderer>().color = green;
+        } else if (hasWater)
+        {
+            GetComponent<SpriteRenderer>().color = blue;
+        }
     }
 }
