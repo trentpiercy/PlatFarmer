@@ -11,16 +11,32 @@ public class PlayerMovement : MonoBehaviour {
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
-	
+
+	Animator animator;
+
+	private void Start()
+	{
+		animator = GetComponentInChildren<Animator>();
+	}
+
 	// Update is called once per frame
 	void Update () {
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+		if (Mathf.Abs(horizontalMove) > 0)
+		{
+			animator.enabled = true;
+		} else
+		{
+			animator.enabled = false;
+		}
 
 		if (Input.GetButtonDown("Jump"))
 		{
 			jump = true;
         }
+
+
         //if (Input.GetButtonDown("Crouch"))
         //{
         //	crouch = true;
