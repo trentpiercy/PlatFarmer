@@ -18,22 +18,30 @@ public class Soil : MonoBehaviour
     public Color green = new(170, 255, 0);
     public Color blue = Color.blue;
 
-    public void PlantSeed()
+    public bool PlantSeed()
     {
+        if (hasSeed) return false;
+
         GetComponent<SpriteRenderer>().color = green;
         hasSeed = true;
         Debug.Log("Planted Seed.");
 
         TryGrowTree();
+
+        return true;
     }
     
-    public void WaterSoil()
+    public bool WaterSoil()
     {
+        if (hasWater) return false;
+
         GetComponent<SpriteRenderer>().color = blue;
         hasWater = true;
         Debug.Log("Watered Soil.");
 
         TryGrowTree();
+
+        return true;
     }
 
     private void TryGrowTree()

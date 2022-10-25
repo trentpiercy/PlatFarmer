@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5362239513876091319}
   - component: {fileID: 5362239513876091323}
   m_Layer: 3
-  m_Name: Tree 45
+  m_Name: Tree 45 Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

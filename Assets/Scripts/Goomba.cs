@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goomba : MonoBehaviour
+public class Goomba : Enemy
 {
     public Transform leftmost;
     public Transform rightmost;
@@ -12,7 +12,7 @@ public class Goomba : MonoBehaviour
     private int direction = -1;
 
     // Called when hit by player
-    public void Attacked()
+    public override void Attacked()
     {
         Destroy(gameObject);
     }

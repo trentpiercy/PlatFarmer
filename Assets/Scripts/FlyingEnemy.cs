@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : MonoBehaviour
+public class FlyingEnemy : Enemy
 {
     public float speed;
     public bool target;
@@ -16,7 +16,7 @@ public class FlyingEnemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void Attacked()
+    public override void Attacked()
     {
         Destroy(gameObject);
     }

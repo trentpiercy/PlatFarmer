@@ -13,44 +13,53 @@ public class Axe : MonoBehaviour
     // How far can the player reach to chop a tree
     public float chopRange;
 
+    // How long to chop for and show animation
+    public float chopTime = 0.2f;
 
     // Angle to rotate axe to when chopping
     private readonly float axeChopDegrees = 60;
 
-    // How long to show axe at axeChopDegrees
-    private readonly float animationDelay = 0.2f;
-
     private bool isChopping = false;
+
+    private void HitCheck()
+    {
+        // Check for hitting trees
+        Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
+        for (int i = 0; i < hitTrees.Length; i++)
+        {
+            hitTrees[i].gameObject.GetComponent<TreeFall>().FallDown();
+        }
+
+        // Check for hitting enemies
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, enemiesLayer);
+        for (int i = 0; i < hitEnemies.Length; i++)
+        {
+            Debug.Log("Hit enemy!");
+            hitEnemies[i].gameObject.GetComponent<Enemy>().Attacked();
+        }
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && !isChopping){
+        // If not chopping and trying to, start chopping
+        if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0) ) && !isChopping){
 
             isChopping = true;
             transform.Rotate(new Vector3(0, 0, -axeChopDegrees));
 
-            // Check for hitting trees
-            Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
-            for (int i = 0; i < hitTrees.Length; i++)
-            {
-                hitTrees[i].gameObject.GetComponent<TreeFall>().FallDown();
-            }
-
-            // Check for hitting enemies
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, enemiesLayer);
-            for (int i = 0; i < hitEnemies.Length; i++)
-            {
-                Debug.Log("Hit enemy!");
-                hitEnemies[i].gameObject.GetComponent<Enemy>().callOnAttacked.Invoke();
-            }
-
             StartCoroutine(ChopWait());
+        }
+
+        // If currently chopping, check for hits
+        if (isChopping)
+        {
+            HitCheck();
         }
     }
 
     IEnumerator ChopWait()
     {
-        yield return new WaitForSeconds(animationDelay);
+        yield return new WaitForSeconds(chopTime);
 
         transform.Rotate(new Vector3(0, 0, axeChopDegrees));
         isChopping = false;

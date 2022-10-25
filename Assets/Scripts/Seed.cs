@@ -24,8 +24,10 @@ public class Seed : MonoBehaviour
             for (int i = 0; i < hitSoils.Length; i++)
             {
                 Soil soil = hitSoils[i].gameObject.GetComponent<Soil>();
-                soil.PlantSeed();
-                Destroy(gameObject);
+                if (soil.PlantSeed())
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
