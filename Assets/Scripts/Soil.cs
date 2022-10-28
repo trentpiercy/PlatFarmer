@@ -6,6 +6,9 @@ using UnityEngine;
 public class Soil : MonoBehaviour
 {
     public GameObject tree;
+
+    public GameObject sapling;
+
     // Has a seed been planted
     public bool hasSeed = false;
 
@@ -13,16 +16,15 @@ public class Soil : MonoBehaviour
     public bool hasWater = false;
 
     // Only allow tree to be grown once
-    public bool treeGrown = false;
+    private bool treeGrown = false;
 
-    public Color green = new(170, 255, 0);
     public Color blue = Color.blue;
 
     public bool PlantSeed()
     {
         if (hasSeed) return false;
 
-        GetComponent<SpriteRenderer>().color = green;
+        sapling.SetActive(true);
         hasSeed = true;
         Debug.Log("Planted Seed.");
 
@@ -52,6 +54,8 @@ public class Soil : MonoBehaviour
         // Grown if both seed and water
         if (hasSeed && hasWater)
         {
+            sapling.SetActive(false);
+
             treeGrown = true;
             Instantiate(tree, new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z), Quaternion.identity);
             Debug.Log("Soil has seed and water! Planting tree");
@@ -65,7 +69,7 @@ public class Soil : MonoBehaviour
     {
         if (hasSeed)
         {
-            GetComponent<SpriteRenderer>().color = green;
+            sapling.SetActive(true);
         } else if (hasWater)
         {
             GetComponent<SpriteRenderer>().color = blue;
