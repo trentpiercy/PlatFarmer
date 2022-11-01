@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 808251857168960185}
   - component: {fileID: 808251857168960134}
   - component: {fileID: 808251857168960187}
+  - component: {fileID: 305593363223836102}
   - component: {fileID: 3093728663844950042}
   m_Layer: 8
   m_Name: Player
@@ -125,6 +126,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 808251858034460605}
   m_CeilingCheck: {fileID: 808251856572385793}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Grounded: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -198,6 +200,21 @@ CircleCollider2D:
   m_Offset: {x: -0.0071339607, y: -0.023704797}
   serializedVersion: 2
   m_Radius: 0.49263987
+--- !u!114 &305593363223836102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808251857168960128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19240597c4ba645aab998186d7b4a2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  lastGroundedPos: {fileID: 0}
+  hasFallen: 0
 --- !u!114 &3093728663844950042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathY: -20
+  respawn: {fileID: 0}
   enemyLayer: 12
 --- !u!1 &808251858034460604
 GameObject:

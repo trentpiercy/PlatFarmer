@@ -13,7 +13,8 @@ public class DeathCheck : MonoBehaviour
     {
         if (transform.position.y < deathY)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            RespawnAfterFall.hasFallen = true;
         }
     }
 
