@@ -4,35 +4,31 @@ using UnityEngine;
 
 public class RespawnAfterFall : MonoBehaviour
 {
-    public CharacterController2D controller;
+    private CharacterController2D controller;
     public Vector3 lastGroundedPos;
-    public static bool hasFallen;
-    private bool isRunning = true;
 
-    // Update is called once per frame
-    void Update()
-
+    private void Start()
     {
-        if (isRunning)
+        controller = GetComponent<CharacterController2D>();
+        StartCoroutine(SpawnPoint());
+    }
+
+    private IEnumerator SpawnPoint() 
+    {
+        while (true)
         {
-            StartCoroutine(SpawnPoint());
+            if (controller.m_Grounded)
+            {
+                lastGroundedPos = transform.position;
+                yield return new WaitForSeconds(2f);
+            }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
-    private IEnumerator SpawnPoint() {
 
-        Debug.Log(controller.m_Grounded);
-        if (controller.m_Grounded)
-        {
-            isRunning = false;
-            lastGroundedPos = transform.position;
-            yield return new WaitForSeconds(2.0f);
-            isRunning = true;
-            yield return new WaitForSeconds(2.0f);
-        }
-        else if (hasFallen == true)
-        {
-            transform.position = lastGroundedPos;
-            hasFallen = false;
-        }
+    public void Respawn()
+    {
+        transform.position = lastGroundedPos;
     }
 }
