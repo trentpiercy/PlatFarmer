@@ -27,7 +27,9 @@ public class Axe : MonoBehaviour
         Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
         for (int i = 0; i < hitTrees.Length; i++)
         {
-            hitTrees[i].gameObject.GetComponent<TreeFall>().FallDown();
+            //hitTrees[i].gameObject.GetComponent<TreeFall>().FallDown();
+            hitTrees[i].gameObject.GetComponent<Tree>().ChopTree();
+            isChopping = false;
         }
 
         // Check for hitting enemies

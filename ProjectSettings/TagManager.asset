@@ -10,6 +10,8 @@ TagManager:
   - Seed
   - Water
   - Goomba
+  - Log
+  - FallenTrees
   layers:
   - Default
   - TransparentFX
