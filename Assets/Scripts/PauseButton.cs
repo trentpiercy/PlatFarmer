@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PauseButton : MonoBehaviour
 {
+    public TextMesh buttonText;
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(TogglePause);
@@ -16,12 +17,12 @@ public class PauseButton : MonoBehaviour
         if (Time.timeScale==0.0f)
         {
             Debug.Log("Paused");
-            GetComponent<Button>().GetComponent<Text>().text = "Resume";
+            buttonText.text = "Resume";
             GetComponent<Button>().GetComponent<Image>().color = Color.green;
         } else
         {
             Debug.Log("Resumed");
-            GetComponent<Button>().GetComponent<Text>().text = "Pause";
+            buttonText.text = "Pause";
             GetComponent<Button>().GetComponent<Image>().color = Color.gray;
 
         }
