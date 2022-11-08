@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PauseButton : MonoBehaviour
 {
-    public TextMesh buttonText;
+    public Text buttonText;
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(TogglePause);
