@@ -6,7 +6,7 @@ public class Goomba : Enemy
 {
     public Transform leftmost;
     public Transform rightmost;
-
+    public Color newColor;
     public float moveSpeed = 2f;
 
     private int direction = -1;
@@ -14,6 +14,13 @@ public class Goomba : Enemy
     // Called when hit by player
     public override void Attacked()
     {
+        Destroy(gameObject);
+    }
+
+    public override IEnumerator Burn()
+    {
+        GetComponent<SpriteRenderer>().color = newColor;
+        yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
 

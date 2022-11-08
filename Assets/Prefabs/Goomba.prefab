@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftmost: {fileID: 1083868448365450757}
   rightmost: {fileID: 1083868447644165636}
+  newColor: {r: 0.83137256, g: 0.26413512, b: 0, a: 1}
   moveSpeed: 2
 --- !u!58 &1083868446641587246
 CircleCollider2D:

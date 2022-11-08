@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-
-
     private Rigidbody2D rb;
     public GameObject log;
     public GameObject seed;
-
+    public Color newColor;
     public Transform hitLocation;
     public Transform player;
     public float forceX;
@@ -53,5 +51,11 @@ public class Tree : MonoBehaviour
 
         }
 
+    }
+    public IEnumerator Burn()
+    {
+        GetComponent<SpriteRenderer>().color = newColor;
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }

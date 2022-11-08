@@ -6,7 +6,7 @@ public class FlyingEnemy : Enemy
 {
     public float speed;
     public bool target;
-   
+    public Color newColor;
     public Transform startingPoint;
     private GameObject player;
 
@@ -20,6 +20,14 @@ public class FlyingEnemy : Enemy
     {
         Destroy(gameObject);
     }
+
+    public override IEnumerator Burn()
+    {   
+        GetComponent<SpriteRenderer>().color = newColor;
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
+
     private void Update()
     {
         if (target == true)
