@@ -15,10 +15,9 @@ public class Soil : MonoBehaviour
     // Is the soil watered
     public bool hasWater = false;
 
-    // Only allow tree to be grown once
-    private bool treeGrown = false;
-
     public Color blue = Color.blue;
+
+    private SpriteRenderer sprite;
 
     public bool PlantSeed()
     {
@@ -37,9 +36,8 @@ public class Soil : MonoBehaviour
     {
         if (hasWater) return false;
 
-        var renderer = GetComponent<SpriteRenderer>();
-        renderer.enabled = true;
-        renderer.color = blue;
+        sprite.enabled = true;
+        sprite.color = blue;
 
         hasWater = true;
         Debug.Log("Watered Soil.");
@@ -51,31 +49,34 @@ public class Soil : MonoBehaviour
 
     private void TryGrowTree()
     {
-        // Quit if already grown
-        if (treeGrown) return;
+        //// Quit if already grown
+        //if (treeGrown) return;
 
         // Grown if both seed and water
         if (hasSeed && hasWater)
         {
             sapling.SetActive(false);
+            sprite.enabled = false;
 
-            treeGrown = true;
+            hasSeed = false;
+            hasWater = false;
+
             Instantiate(tree, new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z), Quaternion.identity);
             Debug.Log("Soil has seed and water! Planting tree");
-
-            Debug.Log("Tree is grown.");
         }
     }
 
 
     private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
+
         if (hasSeed)
         {
             sapling.SetActive(true);
         } else if (hasWater)
         {
-            GetComponent<SpriteRenderer>().color = blue;
+            sprite.color = blue;
         }
     }
 }
