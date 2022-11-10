@@ -14,7 +14,7 @@ public class HoldObject : MonoBehaviour
     {
         if (heldItem == null)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
             {
                 if (GetComponent<Collider2D>().IsTouchingLayers(itemLayerMask))
                 {
@@ -56,11 +56,11 @@ public class HoldObject : MonoBehaviour
         }
         else // Item held
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
             {
                 DropItem();
             }
-            else if (Input.GetKeyDown(KeyCode.G))
+            else if (Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0))
             {
                 if (heldItem.CompareTag("Seed"))
                 {
