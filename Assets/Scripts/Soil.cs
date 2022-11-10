@@ -37,7 +37,10 @@ public class Soil : MonoBehaviour
     {
         if (hasWater) return false;
 
-        GetComponent<SpriteRenderer>().color = blue;
+        var renderer = GetComponent<SpriteRenderer>();
+        renderer.enabled = true;
+        renderer.color = blue;
+
         hasWater = true;
         Debug.Log("Watered Soil.");
 
