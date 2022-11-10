@@ -9,10 +9,11 @@ public class Tree : MonoBehaviour
     public GameObject seed;
     public Color newColor;
     public Transform hitLocation;
-    public Transform player;
     public float forceX;
     public float forceY;
     public bool standing;
+
+    private Transform player;
 
     // Start is called before the first frame update
     public void Start()
@@ -20,6 +21,8 @@ public class Tree : MonoBehaviour
         standing = true;
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     
     public void ChopTree()

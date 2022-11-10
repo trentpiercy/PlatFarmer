@@ -102,7 +102,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   plantLocation: {fileID: 4495781485620617508}
-  plantRange: 0.5
+  plantRange: 0.3
 --- !u!212 &22402538
 SpriteRenderer:
   m_ObjectHideFlags: 0
