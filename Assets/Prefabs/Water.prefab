@@ -102,7 +102,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   waterLocation: {fileID: 603179549725786124}
-  waterRange: 0.5
+  waterRange: 0.3
 --- !u!212 &1316389119
 SpriteRenderer:
   m_ObjectHideFlags: 0

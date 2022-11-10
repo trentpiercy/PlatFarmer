@@ -19,7 +19,7 @@ public class Seed : MonoBehaviour
     {
         if (GetComponent<Collider2D>().IsTouchingLayers(soilLayer))
         {
-            Debug.Log("Hit soil");
+            Debug.Log("Seed hit soil");
             Collider2D[] hitSoils = Physics2D.OverlapCircleAll(plantLocation.position, plantRange, soilLayer);
             for (int i = 0; i < hitSoils.Length; i++)
             {
