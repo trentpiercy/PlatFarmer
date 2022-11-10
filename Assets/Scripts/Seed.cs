@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +16,23 @@ public class Seed : MonoBehaviour
     // How far can the player reach to plant a seed
     public float plantRange;
 
-    void Update()
+    public void Drop()
+    {
+        StartCoroutine(DropRoutine());
+    }
+
+    private IEnumerator DropRoutine()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            if (CheckPlanted())
+                break;
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private bool CheckPlanted()
     {
         if (GetComponent<Collider2D>().IsTouchingLayers(soilLayer))
         {
@@ -27,8 +44,11 @@ public class Seed : MonoBehaviour
                 if (soil.PlantSeed())
                 {
                     Destroy(gameObject);
+                    return true;
                 }
             }
         }
+
+        return false;
     }
 }

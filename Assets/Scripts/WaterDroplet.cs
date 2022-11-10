@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,21 +15,38 @@ public class WaterDroplet : MonoBehaviour
 
     // How far can the player reach to water soil
     public float waterRange;
-
-    void Update()
+    public void Drop()
     {
-        // TODO this should only run while held by player
+        StartCoroutine(DropRoutine());
+    }
 
+    private IEnumerator DropRoutine()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            if (CheckWatered())
+                break;
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private bool CheckWatered()
+    {
         if (GetComponent<Collider2D>().IsTouchingLayers(soilLayer))
         {
-			Debug.Log("Water hit soil");
+            Debug.Log("Water hit soil");
             Collider2D[] hitSoils = Physics2D.OverlapCircleAll(waterLocation.position, waterRange, soilLayer);
             for (int i = 0; i < hitSoils.Length; i++)
             {
                 Soil soil = hitSoils[i].gameObject.GetComponent<Soil>();
                 soil.WaterSoil();
                 Destroy(gameObject);
+
+                return true;
             }
         }
+
+        return false;
     }
 }

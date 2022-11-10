@@ -12,9 +12,9 @@ public class HoldObject : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (heldItem == null)
         {
-            if (heldItem == null)
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 if (GetComponent<Collider2D>().IsTouchingLayers(itemLayerMask))
                 {
@@ -26,7 +26,7 @@ public class HoldObject : MonoBehaviour
                     // Pickup the first item
                     heldItem = items[0].gameObject;
                     heldItem = heldItem.transform.parent.gameObject;
-                    heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;                    
+                    heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                     if (heldItem.CompareTag("Axe"))
                     {
                         heldItem.GetComponent<Axe>().enabled = true;
@@ -44,7 +44,7 @@ public class HoldObject : MonoBehaviour
                         {
                             Debug.Log("you are ahead");
                             heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
-                        }  
+                        }
                     }
                     else
                     {
@@ -53,25 +53,45 @@ public class HoldObject : MonoBehaviour
                     heldItem.transform.parent = playerHands.transform;// makes the object become a child of the parent so that it moves with the hands
                 }
             }
-            else // drop
+        }
+        else // Item held
+        {
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Assert(heldItem != null);
-                Debug.Log("Put down!");
-
-                heldItem.transform.parent = null; // make the object not be a child of the hands
-
-                heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                if (heldItem.CompareTag("Axe"))
+                DropItem();
+            }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                if (heldItem.CompareTag("Seed"))
                 {
-                    heldItem.GetComponent<Axe>().enabled = false;
-                }
-                else if (heldItem.CompareTag("Log"))
+                    heldItem.GetComponent<Seed>().Drop();
+                    DropItem();
+                } else if (heldItem.CompareTag("Water"))
                 {
-                    heldItem.layer = LayerMask.NameToLayer("Default");
+                    heldItem.GetComponent<WaterDroplet>().Drop();
+                    DropItem();
                 }
-
-                heldItem = null;
             }
         }
+    }
+
+    private void DropItem()
+    {
+        Debug.Assert(heldItem != null);
+        Debug.Log("Put down!");
+
+        heldItem.transform.parent = null; // make the object not be a child of the hands
+
+        heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        if (heldItem.CompareTag("Axe"))
+        {
+            heldItem.GetComponent<Axe>().enabled = false;
+        }
+        else if (heldItem.CompareTag("Log"))
+        {
+            heldItem.layer = LayerMask.NameToLayer("Default");
+        }
+
+        heldItem = null;
     }
 }
