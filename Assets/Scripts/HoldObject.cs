@@ -9,7 +9,6 @@ public class HoldObject : MonoBehaviour
     private GameObject heldItem;
     public LayerMask itemLayerMask;
 
-
     void Update()
     {
         if (heldItem == null)
@@ -30,7 +29,27 @@ public class HoldObject : MonoBehaviour
                     if (heldItem.CompareTag("Axe"))
                     {
                         heldItem.GetComponent<Axe>().enabled = true;
-                        heldItem.transform.position = playerHands.transform.position;
+                        bool playerFaceForward = playerHands.transform.position.x > playerHands.transform.parent.position.x;
+                        bool axAheadPlayer = heldItem.transform.position.x > playerHands.transform.parent.position.x;
+;                        //heldItem.transform.position = playerHands.transform.position;
+                        if (playerFaceForward)
+                        {
+                            Debug.Log("axe should face forward");
+                            heldItem.transform.position = playerHands.transform.position;
+                            heldItem.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+                            Debug.Log(heldItem.transform.localScale);
+
+                        }
+                        else
+                        {
+                            Debug.Log("axe should face backwards");
+                            heldItem.transform.position = playerHands.transform.position;
+                            heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
+                            Debug.Log(heldItem.transform.localScale);
+
+
+                        }
+
                     }
                     else if (heldItem.CompareTag("Log"))
                     {
