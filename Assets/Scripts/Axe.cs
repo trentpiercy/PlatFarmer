@@ -51,7 +51,7 @@ public class Axe : MonoBehaviour
 
             isChopping = true;
             transform.Rotate(new Vector3(0, 0, -axeChopDegrees));
-
+            chopSound.Play();
             StartCoroutine(ChopWait());
         }
 

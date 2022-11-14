@@ -8,6 +8,10 @@ public class HoldObject : MonoBehaviour
 
     private GameObject heldItem;
     public LayerMask itemLayerMask;
+    public AudioSource axeDrop;
+    public AudioSource seedDrop;
+    public AudioSource waterDrop;
+    public AudioSource success;
 
     void Update()
     {
@@ -78,6 +82,13 @@ public class HoldObject : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
             {
                 DropItem();
+                if (heldItem.CompareTag("Seed"))
+                {
+                    seedDrop.Play();
+                } else if (heldItem.CompareTag("Water"))
+                {
+                    waterDrop.Play();
+                }
             }
             else if (Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0))
             {
@@ -85,10 +96,13 @@ public class HoldObject : MonoBehaviour
                 {
                     heldItem.GetComponent<Seed>().Drop();
                     DropItem();
+                    success.Play();
                 } else if (heldItem.CompareTag("Water"))
                 {
                     heldItem.GetComponent<WaterDroplet>().Drop();
                     DropItem();
+                    success.Play();
+
                 }
             }
         }
