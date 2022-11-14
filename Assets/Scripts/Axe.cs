@@ -20,6 +20,9 @@ public class Axe : MonoBehaviour
     private readonly float axeChopDegrees = 60;
 
     private bool isChopping = false;
+    public AudioSource chopSound;
+
+
 
     private void HitCheck()
     {
@@ -56,6 +59,7 @@ public class Axe : MonoBehaviour
         if (isChopping)
         {
             HitCheck();
+            chopSound.Play();
         }
     }
 

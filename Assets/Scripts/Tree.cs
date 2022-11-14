@@ -30,6 +30,7 @@ public class Tree : MonoBehaviour
         if (standing)
         {
             Debug.Log(standing);
+            //treeFall.Play();
             rb.constraints &= RigidbodyConstraints2D.None;
 
             if (transform.position.x > player.transform.position.x)
@@ -41,7 +42,9 @@ public class Tree : MonoBehaviour
                 rb.AddForceAtPosition(new Vector2(-forceX, forceY), hitLocation.position);
             }
             standing = false;
-        }
+
+
+}
 
         else
         {

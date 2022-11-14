@@ -15,10 +15,12 @@ public class Seed : MonoBehaviour
 
     // How far can the player reach to plant a seed
     public float plantRange;
+    public AudioSource seedFall;
 
     public void Drop()
     {
         StartCoroutine(DropRoutine());
+        //seedFall.Play();
     }
 
     private IEnumerator DropRoutine()

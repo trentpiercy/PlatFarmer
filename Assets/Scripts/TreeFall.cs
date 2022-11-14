@@ -9,6 +9,8 @@ public class TreeFall : MonoBehaviour
 
     // Has this tree been chopped yet
     private bool chopped = false;
+    public AudioSource treeFall;
+
 
     public void FallDown()
     {
@@ -18,7 +20,7 @@ public class TreeFall : MonoBehaviour
 
         gameObject.GetComponent<Transform>().position = choppedTransform.position;
         gameObject.GetComponent<Transform>().rotation = choppedTransform.rotation;
-
+        treeFall.Play();
         chopped = true;
     }
 }

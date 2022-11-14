@@ -15,9 +15,12 @@ public class WaterDroplet : MonoBehaviour
 
     // How far can the player reach to water soil
     public float waterRange;
+    public AudioSource waterDrop;
+
     public void Drop()
     {
         StartCoroutine(DropRoutine());
+        waterDrop.Play();
     }
 
     private IEnumerator DropRoutine()

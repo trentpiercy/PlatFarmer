@@ -18,6 +18,7 @@ public class Soil : MonoBehaviour
     public Color blue = Color.blue;
 
     private SpriteRenderer sprite;
+    public AudioSource planted;
 
     public bool PlantSeed()
     {
@@ -63,6 +64,7 @@ public class Soil : MonoBehaviour
 
             Instantiate(tree, new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z), Quaternion.identity);
             Debug.Log("Soil has seed and water! Planting tree");
+            planted.Play();
         }
     }
 
