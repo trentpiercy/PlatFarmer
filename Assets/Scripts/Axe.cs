@@ -46,6 +46,14 @@ public class Axe : MonoBehaviour
             Debug.Log("Hit enemy!");
             hitEnemies[i].gameObject.GetComponent<Enemy>().Attacked();
         }
+
+        // Check for hitting saplings
+        GameObject[] saplings = GameObject.FindGameObjectsWithTag("Sapling");
+        for (int i = 0; i < saplings.Length; i++)
+        {
+            Debug.Log("Hit sapling!");
+            saplings[i].GetComponent<Sapling>().Chop();
+        }
     }
 
     private void Update()
