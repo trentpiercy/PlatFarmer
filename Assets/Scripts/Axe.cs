@@ -22,12 +22,6 @@ public class Axe : MonoBehaviour
     private bool isChopping = false;
     public AudioSource chopSound;
 
-    private void Start()
-    {
-        enabled = false;
-    }
-
-
     private void HitCheck()
     {
         // Check for hitting trees
