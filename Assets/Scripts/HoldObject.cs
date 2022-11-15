@@ -86,25 +86,25 @@ public class HoldObject : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
             {
-                DropItem();
                 if (heldItem.CompareTag("Seed"))
                 {
-                    seedDrop.Play();
+                    //seedDrop.Play();
                 } else if (heldItem.CompareTag("Water"))
                 {
-                    waterDrop.Play();
+                    //waterDrop.Play();
                 }
+                DropItem();
             }
             else if (Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0))
             {
                 if (heldItem.CompareTag("Seed"))
                 {
-                    heldItem.GetComponent<Seed>().Drop();
+                    heldItem.GetComponent<Seed>().DropToPlant();
                     DropItem();
                     success.Play();
                 } else if (heldItem.CompareTag("Water"))
                 {
-                    heldItem.GetComponent<WaterDroplet>().Drop();
+                    heldItem.GetComponent<WaterDroplet>().DropToPlant();
                     DropItem();
                     success.Play();
 

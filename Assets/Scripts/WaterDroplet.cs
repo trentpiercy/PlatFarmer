@@ -17,7 +17,7 @@ public class WaterDroplet : MonoBehaviour
     public float waterRange;
     public AudioSource waterDrop;
 
-    public void Drop()
+    public void DropToPlant()
     {
         StartCoroutine(DropRoutine());
         waterDrop.Play();
@@ -40,11 +40,14 @@ public class WaterDroplet : MonoBehaviour
         {
             Debug.Log("Water hit soil");
             Collider2D[] hitSoils = Physics2D.OverlapCircleAll(waterLocation.position, waterRange, soilLayer);
-            for (int i = 0; i < hitSoils.Length; i++)
+            if (hitSoils.Length > 0)
             {
-                Soil soil = hitSoils[i].gameObject.GetComponent<Soil>();
-                soil.WaterSoil();
-                Destroy(gameObject);
+                SoilTilemap soil = hitSoils[0].gameObject.GetComponent<SoilTilemap>();
+                if (soil.WaterSoil(transform.position))
+                {
+                    Destroy(gameObject);
+                    return true;
+                }
 
                 return true;
             }
