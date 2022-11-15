@@ -12,6 +12,7 @@ TagManager:
   - Goomba
   - Log
   - FallenTrees
+  - Torch
   layers:
   - Default
   - TransparentFX

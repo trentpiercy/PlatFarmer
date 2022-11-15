@@ -8,52 +8,59 @@ public class Torch : MonoBehaviour
     public LayerMask enemiesLayer;
 
     // Point to check chop range from
-    public Transform chopLocation;
+    public Transform swingLocation;
 
     // How far can the player reach to chop a tree
-    public float chopRange;
+    public float swingRange = 1f;
 
     // How long to chop for and show animation
     public float chopTime = 0.2f;
 
     // Angle to rotate axe to when chopping
-    private readonly float axeChopDegrees = 60;
+    private readonly float torchSwingDegrees = 60;
 
-    private bool isChopping = false;
+    private bool isUsing = false;
+
+    private void Start()
+    {
+        enabled = false;
+        swingLocation = transform;
+    }
 
     private void HitCheck()
     {
         // Check for hitting trees
-        Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
+        Collider2D[] hitTrees = Physics2D.OverlapCircleAll(swingLocation.position, swingRange, treesLayer);
         for (int i = 0; i < hitTrees.Length; i++)
         {
+            Debug.Log("burn tree");
             StartCoroutine(hitTrees[i].gameObject.GetComponent<Tree>().Burn());
-            isChopping = false;
+            isUsing = false;
         }
 
         // Check for hitting enemies
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, enemiesLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swingLocation.position, swingRange, enemiesLayer);
         for (int i = 0; i < hitEnemies.Length; i++)
         {
             Debug.Log("Hit enemy!");
-            hitEnemies[i].gameObject.GetComponent<Enemy>().Burn();
+            StartCoroutine(hitEnemies[i].gameObject.GetComponent<Enemy>().Burn());
         }
     }
 
     private void Update()
     {
         // If not chopping and trying to, start chopping
-        if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0)) && !isChopping)
+        if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0)) && !isUsing)
         {
 
-            isChopping = true;
-            transform.Rotate(new Vector3(0, 0, -axeChopDegrees));
+            isUsing = true;
+            transform.Rotate(new Vector3(0, 0, -torchSwingDegrees));
 
             StartCoroutine(ChopWait());
         }
 
         // If currently chopping, check for hits
-        if (isChopping)
+        if (isUsing)
         {
             HitCheck();
         }
@@ -63,7 +70,7 @@ public class Torch : MonoBehaviour
     {
         yield return new WaitForSeconds(chopTime);
 
-        transform.Rotate(new Vector3(0, 0, axeChopDegrees));
-        isChopping = false;
+        transform.Rotate(new Vector3(0, 0, torchSwingDegrees));
+        isUsing = false;
     }
 }

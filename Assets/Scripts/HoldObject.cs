@@ -69,6 +69,11 @@ public class HoldObject : MonoBehaviour
                             heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
                         }
                     }
+                    else if (heldItem.CompareTag("Torch"))
+                    {
+                        heldItem.transform.position = playerHands.transform.position;
+                        heldItem.GetComponent<Torch>().enabled = true;
+                    }
                     else
                     {
                         heldItem.transform.position = playerHands.transform.position; // sets the position of the object to your hand position
@@ -119,6 +124,10 @@ public class HoldObject : MonoBehaviour
         if (heldItem.CompareTag("Axe"))
         {
             heldItem.GetComponent<Axe>().enabled = false;
+        }
+        else if (heldItem.CompareTag("Torch"))
+        {
+            heldItem.GetComponent<Torch>().enabled = false;
         }
         else if (heldItem.CompareTag("Log"))
         {
