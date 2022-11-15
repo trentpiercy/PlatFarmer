@@ -62,7 +62,9 @@ public class Soil : MonoBehaviour
             hasSeed = false;
             hasWater = false;
 
-            Instantiate(tree, new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z), Quaternion.identity);
+            Instantiate(tree, new Vector3(transform.position.x, 
+                transform.position.y + 1.6f, transform.position.z), 
+                Quaternion.identity);
             Debug.Log("Soil has seed and water! Planting tree");
             planted.Play();
         }
