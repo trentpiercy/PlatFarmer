@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Bits: 1
   plantLocation: {fileID: 4495781485620617508}
   plantRange: 0.3
-  seedFall: {fileID: 0}
+  seedFall: {fileID: 3358126970021442429}
 --- !u!212 &22402538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 36121115a6a2e4c2ebfc853d6c0aa5ca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f1176a10b72c04307a26c347d781b36c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

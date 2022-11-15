@@ -12,7 +12,7 @@ public class Tree : MonoBehaviour
     public float forceX;
     public float forceY;
     public bool standing;
-
+    //public AudioSource treeFall;
     private Transform player;
 
     // Start is called before the first frame update
@@ -27,6 +27,7 @@ public class Tree : MonoBehaviour
     
     public void ChopTree()
     {
+        Debug.Log("HERE in ChopTree "+ standing);
         if (standing)
         {
             Debug.Log(standing);
@@ -42,6 +43,7 @@ public class Tree : MonoBehaviour
                 rb.AddForceAtPosition(new Vector2(-forceX, forceY), hitLocation.position);
             }
             standing = false;
+
 
 
 }

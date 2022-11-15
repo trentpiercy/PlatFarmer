@@ -20,7 +20,7 @@ public class Seed : MonoBehaviour
     public void Drop()
     {
         StartCoroutine(DropRoutine());
-        //seedFall.Play();
+        seedFall.Play();
     }
 
     private IEnumerator DropRoutine()
