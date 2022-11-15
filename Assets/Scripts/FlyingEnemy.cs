@@ -24,7 +24,7 @@ public class FlyingEnemy : Enemy
     public override IEnumerator Burn()
     {   
         GetComponent<SpriteRenderer>().color = newColor;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
 

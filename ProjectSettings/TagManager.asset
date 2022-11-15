@@ -12,6 +12,8 @@ TagManager:
   - Goomba
   - Log
   - FallenTrees
+  - Torch
+  - Sapling
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - CameraChange
   - Enemy
   - Chase Zone
-  - 
+  - Sapling
   - 
   - 
   - 

@@ -17,7 +17,7 @@ public class Seed : MonoBehaviour
     public float plantRange;
     public AudioSource seedFall;
 
-    public void Drop()
+    public void DropToPlant()
     {
         StartCoroutine(DropRoutine());
         seedFall.Play();
@@ -40,10 +40,10 @@ public class Seed : MonoBehaviour
         {
             Debug.Log("Seed hit soil");
             Collider2D[] hitSoils = Physics2D.OverlapCircleAll(plantLocation.position, plantRange, soilLayer);
-            for (int i = 0; i < hitSoils.Length; i++)
+            if (hitSoils.Length > 0)
             {
-                Soil soil = hitSoils[i].gameObject.GetComponent<Soil>();
-                if (soil.PlantSeed())
+                SoilTilemap soil = hitSoils[0].gameObject.GetComponent<SoilTilemap>();
+                if (soil.PlantSeed(transform.position))
                 {
                     Destroy(gameObject);
                     return true;

@@ -6,6 +6,7 @@ public class Axe : MonoBehaviour
 {
     public LayerMask treesLayer;
     public LayerMask enemiesLayer;
+    public LayerMask saplingLayer;
 
     // Point to check chop range from
     public Transform chopLocation;
@@ -21,8 +22,6 @@ public class Axe : MonoBehaviour
 
     private bool isChopping = false;
     public AudioSource chopSound;
-
-
 
     private void HitCheck()
     {
@@ -44,6 +43,14 @@ public class Axe : MonoBehaviour
         {
             Debug.Log("Hit enemy!");
             hitEnemies[i].gameObject.GetComponent<Enemy>().Attacked();
+        }
+
+        // Check for hitting saplings
+        Collider2D[] hitSaplings = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, saplingLayer);
+        for (int i = 0; i < hitSaplings.Length; i++)
+        {
+            Debug.Log("Hit sapling!");
+            hitSaplings[i].GetComponent<Sapling>().Chop();
         }
     }
 

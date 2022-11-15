@@ -66,6 +66,11 @@ public class HoldObject : MonoBehaviour
                             heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
                         }
                     }
+                    else if (heldItem.CompareTag("Torch"))
+                    {
+                        heldItem.transform.position = playerHands.transform.position;
+                        heldItem.GetComponent<Torch>().enabled = true;
+                    }
                     else
                     {
                         heldItem.transform.position = playerHands.transform.position; // sets the position of the object to your hand position
@@ -78,18 +83,25 @@ public class HoldObject : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
             {
+                if (heldItem.CompareTag("Seed"))
+                {
+                    //seedDrop.Play();
+                } else if (heldItem.CompareTag("Water"))
+                {
+                    //waterDrop.Play();
+                }
                 DropItem();
             }
             else if (Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0))
             {
                 if (heldItem.CompareTag("Seed"))
                 {
-                    heldItem.GetComponent<Seed>().Drop();
+                    heldItem.GetComponent<Seed>().DropToPlant();
                     DropItem();
                     //success.Play();
                 } else if (heldItem.CompareTag("Water"))
                 {
-                    heldItem.GetComponent<WaterDroplet>().Drop();
+                    heldItem.GetComponent<WaterDroplet>().DropToPlant();
                     DropItem();
                     //success.Play();
                 } else if (heldItem.CompareTag("Axe"))
@@ -113,6 +125,10 @@ public class HoldObject : MonoBehaviour
         {
             heldItem.GetComponent<Axe>().enabled = false;
 
+        }
+        else if (heldItem.CompareTag("Torch"))
+        {
+            heldItem.GetComponent<Torch>().enabled = false;
         }
         else if (heldItem.CompareTag("Log"))
         {

@@ -113,6 +113,9 @@ MonoBehaviour:
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 4096
+  saplingLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   chopLocation: {fileID: 4895178177752414137}
   chopRange: 0.7
   chopTime: 0.2
