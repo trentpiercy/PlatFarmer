@@ -40,6 +40,7 @@ public class WaterDroplet : MonoBehaviour
         {
             Debug.Log("Water hit soil");
             Collider2D[] hitSoils = Physics2D.OverlapCircleAll(waterLocation.position, waterRange, soilLayer);
+            Debug.Log(hitSoils);
             if (hitSoils.Length > 0)
             {
                 SoilTilemap soil = hitSoils[0].gameObject.GetComponent<SoilTilemap>();

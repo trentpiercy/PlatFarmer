@@ -46,6 +46,7 @@ public class Seed : MonoBehaviour
                 if (soil.PlantSeed(transform.position))
                 {
                     Destroy(gameObject);
+
                     return true;
                 }
             }

@@ -20,6 +20,7 @@ public class Torch : MonoBehaviour
     private readonly float torchSwingDegrees = 60;
 
     private bool isUsing = false;
+    public AudioSource useTorch;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class Torch : MonoBehaviour
         Collider2D[] hitTrees = Physics2D.OverlapCircleAll(swingLocation.position, swingRange, treesLayer);
         for (int i = 0; i < hitTrees.Length; i++)
         {
+            useTorch.Play();
             Debug.Log("burn tree");
             StartCoroutine(hitTrees[i].gameObject.GetComponent<Tree>().Burn());
             isUsing = false;
@@ -42,8 +44,10 @@ public class Torch : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swingLocation.position, swingRange, enemiesLayer);
         for (int i = 0; i < hitEnemies.Length; i++)
         {
+            useTorch.Play();
             Debug.Log("Hit enemy!");
             StartCoroutine(hitEnemies[i].gameObject.GetComponent<Enemy>().Burn());
+
         }
     }
 
@@ -59,7 +63,7 @@ public class Torch : MonoBehaviour
             StartCoroutine(ChopWait());
         }
 
-        // If currently chopping, check for hits
+        // If currently chopping, check for hitsf
         if (isUsing)
         {
             HitCheck();

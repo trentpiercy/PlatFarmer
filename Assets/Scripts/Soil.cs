@@ -22,6 +22,7 @@ public class Soil : MonoBehaviour
 
     public bool PlantSeed()
     {
+        Debug.Log("TRYING TO PLANT");
         if (hasSeed) return false;
 
         sapling.SetActive(true);

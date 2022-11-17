@@ -8,7 +8,6 @@ public class HoldObject : MonoBehaviour
 
     private GameObject heldItem;
     public LayerMask itemLayerMask;
-    //public AudioSource success;
 
     void Update()
     {
@@ -22,14 +21,20 @@ public class HoldObject : MonoBehaviour
                     Collider2D[] items = Physics2D.OverlapCircleAll(transform.position, 0.5f, itemLayerMask);
 
                     if (items.Length == 0) return;
-
                     // Pickup the first item
                     heldItem = items[0].gameObject;
                     heldItem = heldItem.transform.parent.gameObject;
                     heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-                    if (heldItem.CompareTag("Axe"))
+                    if (heldItem.CompareTag("Axe") || heldItem.CompareTag("Torch"))
                     {
-                        heldItem.GetComponent<Axe>().enabled = true;
+                        if (heldItem.CompareTag("Axe"))
+                        {
+                            heldItem.GetComponent<Axe>().enabled = true;
+                        }
+                        if (heldItem.CompareTag("Torch"))
+                        {
+                            heldItem.GetComponent<Torch>().enabled = true;
+                        }
                         bool playerFaceForward = playerHands.transform.position.x > playerHands.transform.parent.position.x;
                         bool axAheadPlayer = heldItem.transform.position.x > playerHands.transform.parent.position.x;
 ;                        //heldItem.transform.position = playerHands.transform.position;
@@ -66,11 +71,7 @@ public class HoldObject : MonoBehaviour
                             heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
                         }
                     }
-                    else if (heldItem.CompareTag("Torch"))
-                    {
-                        heldItem.transform.position = playerHands.transform.position;
-                        heldItem.GetComponent<Torch>().enabled = true;
-                    }
+                    
                     else
                     {
                         heldItem.transform.position = playerHands.transform.position; // sets the position of the object to your hand position
@@ -83,13 +84,6 @@ public class HoldObject : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
             {
-                if (heldItem.CompareTag("Seed"))
-                {
-                    //seedDrop.Play();
-                } else if (heldItem.CompareTag("Water"))
-                {
-                    //waterDrop.Play();
-                }
                 DropItem();
             }
             else if (Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0))
@@ -98,12 +92,10 @@ public class HoldObject : MonoBehaviour
                 {
                     heldItem.GetComponent<Seed>().DropToPlant();
                     DropItem();
-                    //success.Play();
                 } else if (heldItem.CompareTag("Water"))
                 {
                     heldItem.GetComponent<WaterDroplet>().DropToPlant();
                     DropItem();
-                    //success.Play();
                 } else if (heldItem.CompareTag("Axe"))
                 {
                     heldItem.GetComponent<Axe>().Update();

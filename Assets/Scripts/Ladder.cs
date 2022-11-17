@@ -8,6 +8,7 @@ public class Ladder : MonoBehaviour
     private bool isClimbing;
 
     private Rigidbody2D player;
+    public AudioSource climbingSound;
 
     private void Start()
     {

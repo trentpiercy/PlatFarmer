@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {     
     public string nextLevel;
+    public AudioSource success;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            success.Play();
             Debug.Log("At barn!");
 
             SceneManager.LoadScene(nextLevel,LoadSceneMode.Single);
