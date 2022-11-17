@@ -11,14 +11,12 @@ public class Tree : MonoBehaviour
     public Transform hitLocation;
     public float forceX;
     public float forceY;
-    public bool standing;
+    public bool standing = true;
     //public AudioSource treeFall;
     private Transform player;
 
-    // Start is called before the first frame update
-    public void Start()
+    private void Start()
     {
-        standing = true;
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
@@ -30,9 +28,8 @@ public class Tree : MonoBehaviour
         Debug.Log("HERE in ChopTree "+ standing);
         if (standing)
         {
-            Debug.Log(standing);
             //treeFall.Play();
-            rb.constraints &= RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.None;
 
             if (transform.position.x > player.transform.position.x)
             {
@@ -42,12 +39,9 @@ public class Tree : MonoBehaviour
             {
                 rb.AddForceAtPosition(new Vector2(-forceX, forceY), hitLocation.position);
             }
+
             standing = false;
-
-
-
-}
-
+        }
         else
         {
             Vector3 vec = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -56,7 +50,6 @@ public class Tree : MonoBehaviour
             Instantiate(seed, vec, Quaternion.Euler(0, 0, 0));
 
             Destroy(gameObject);
-
         }
 
     }
