@@ -22897,32 +22897,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db674c423999fcc4e816c7e0115f348e, type: 3}
---- !u!1 &1981614024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1608578316680874889, guid: db674c423999fcc4e816c7e0115f348e, type: 3}
-  m_PrefabInstance: {fileID: 1981614023}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1981614029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981614024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac6c8a3444cd94327a5fcebeedacbe29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treesLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  enemiesLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  swingLocation: {fileID: 0}
-  swingRange: 1
-  chopTime: 0.2
 --- !u!1001 &2057999663
 PrefabInstance:
   m_ObjectHideFlags: 0
