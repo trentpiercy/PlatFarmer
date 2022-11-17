@@ -301,7 +301,7 @@ MonoBehaviour:
   swingLocation: {fileID: 1608578316680874885}
   swingRange: 1
   chopTime: 0.2
-  useTorch: {fileID: 0}
+  useTorch: {fileID: -2388593020243745633}
 --- !u!82 &-2388593020243745633
 AudioSource:
   m_ObjectHideFlags: 0

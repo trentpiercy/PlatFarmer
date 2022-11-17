@@ -26,10 +26,16 @@ public class HoldObject : MonoBehaviour
                 heldItem = heldItem.transform.parent.gameObject;
                 heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
-                if (heldItem.CompareTag("Axe"))
+                if (heldItem.CompareTag("Axe")||heldItem.CompareTag("Torch"))
                 {
-                    // Enable the axe
-                    heldItem.GetComponent<Axe>().enabled = true;
+                    if (heldItem.CompareTag("Axe"))
+                    {
+                        heldItem.GetComponent<Axe>().enabled = true;
+                    }
+                    else
+                    {
+                        heldItem.GetComponent<Torch>().enabled = true;
+                    }
 
                     if (items.Length == 0) return;
                     // Pickup the first item
@@ -106,11 +112,7 @@ public class HoldObject : MonoBehaviour
                         heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
                     }
                 }
-                else if (heldItem.CompareTag("Torch"))
-                {
-                    heldItem.transform.position = playerHands.transform.position;
-                    heldItem.GetComponent<Torch>().enabled = true;
-                }
+              
                 else
                 {
                     heldItem.transform.position = playerHands.transform.position; // sets the position of the object to your hand position
