@@ -23307,8 +23307,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: forceX
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: forceY
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: newColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: newColor.b
+      value: 0.514151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: newColor.g
+      value: 0.514151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: newColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: newGravity
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093728663844950042, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+      propertyPath: farmerSprite
+      value: 
+      objectReference: {fileID: 808251858439037339}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+--- !u!212 &808251858439037339 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 808251858165139694, guid: 903b88d3e0aa4c74080ad25651e65586, type: 3}
+  m_PrefabInstance: {fileID: 808251858439037338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4508016881032601429
 PrefabInstance:
   m_ObjectHideFlags: 0

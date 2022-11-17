@@ -6,28 +6,56 @@ using UnityEngine.SceneManagement;
 public class DeathCheck : MonoBehaviour
 {
     public float deathY = -20;
-
+    public float forceX;
+    public float forceY;
+    public Color newColor;
+    private Color originalColor;
+    public SpriteRenderer farmerSprite;
+    public float newGravity = 2f;
+    public float newDrag = 2f;
+    private float waitTime = .3f;
+    private float originalGravity;
     public int enemyLayer;
-    public AudioSource deathYell;
-    private void FixedUpdate()
-    {
-        if (transform.position.y < deathY)
-        {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //RespawnAfterFall.hasFallen = true;
-            deathYell.Play();
-            GetComponent<RespawnAfterFall>().Respawn();
-            
-        }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
+        originalColor = farmerSprite.color;
+        originalGravity = GetComponent<Rigidbody2D>().gravityScale;
+
+    }
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
+    {
+
         if (other.gameObject.layer == enemyLayer)
         {
-            // Restart
-            deathYell.Play();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (other.gameObject.transform.position.x < transform.position.x)
+            {
+                GetComponent<Rigidbody2D>().gravityScale = newGravity;
+                GetComponent<Rigidbody2D>().drag = newDrag;
+                GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(forceX, forceY), transform.position);
+                farmerSprite.color = newColor;
+                yield return new WaitForSeconds(waitTime);
+                farmerSprite.color = originalColor;
+                GetComponent<Rigidbody2D>().drag = 0;
+                GetComponent<Rigidbody2D>().gravityScale = originalGravity;
+
+
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().gravityScale = newGravity;
+                GetComponent<Rigidbody2D>().drag = newDrag;
+                GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-forceX, forceY), transform.position);
+                farmerSprite.color = newColor;
+                yield return new WaitForSeconds(waitTime);
+                farmerSprite.color = originalColor;
+                GetComponent<Rigidbody2D>().drag = 0;
+                GetComponent<Rigidbody2D>().gravityScale = originalGravity;
+            }
+
+
+            //// Restart
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
