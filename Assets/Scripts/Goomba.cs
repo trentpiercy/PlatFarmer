@@ -66,4 +66,9 @@ public class Goomba : Enemy
     {
         rb.velocity = new Vector2(direction * moveSpeed, 0);
     }
+
+    public override void Hit()
+    {
+        Flip();
+    }
 }

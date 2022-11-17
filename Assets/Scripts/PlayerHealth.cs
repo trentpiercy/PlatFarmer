@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RespawnAfterFall : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     private CharacterController2D controller;
     public Vector3 lastGroundedPos;

@@ -9,51 +9,43 @@ public class DeathCheck : MonoBehaviour
     public float forceX;
     public float forceY;
     public Color newColor;
-    private Color originalColor;
+    public float waitTime = 0.3f;
     public SpriteRenderer farmerSprite;
-    public float newGravity = 2f;
-    public float newDrag = 2f;
-    private float waitTime = .3f;
-    private float originalGravity;
     public int enemyLayer;
     public AudioSource deathSound;
 
+    Color originalColor;
+    Rigidbody2D rb;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         originalColor = farmerSprite.color;
-        originalGravity = GetComponent<Rigidbody2D>().gravityScale;
 
     }
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == enemyLayer)
         {
+            // TODO this is not epic code
+            other.transform.parent.GetComponent<Enemy>().Hit();
+
+            GetComponent<PlayerMovement>().enabled = false;
+            farmerSprite.color = newColor;
+
             if (other.gameObject.transform.position.x < transform.position.x)
             {
-                GetComponent<Rigidbody2D>().gravityScale = newGravity;
-                GetComponent<Rigidbody2D>().drag = newDrag;
-                GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(forceX, forceY), transform.position);
-                farmerSprite.color = newColor;
-                deathSound.Play();
-                yield return new WaitForSeconds(waitTime);
-                farmerSprite.color = originalColor;
-                GetComponent<Rigidbody2D>().drag = 0;
-                GetComponent<Rigidbody2D>().gravityScale = originalGravity;
-
-
+                rb.velocity = new Vector2(forceX, forceY);
             }
             else
             {
-                GetComponent<Rigidbody2D>().gravityScale = newGravity;
-                GetComponent<Rigidbody2D>().drag = newDrag;
-                GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-forceX, forceY), transform.position);
-                farmerSprite.color = newColor;
-                yield return new WaitForSeconds(waitTime);
-                farmerSprite.color = originalColor;
-                GetComponent<Rigidbody2D>().drag = 0;
-                GetComponent<Rigidbody2D>().gravityScale = originalGravity;
+                rb.velocity = new Vector2(-forceX, forceY);
             }
 
+            yield return new WaitForSeconds(waitTime);
+
+            farmerSprite.color = originalColor;
+            GetComponent<PlayerMovement>().enabled = true;
 
             //// Restart
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);

@@ -61,4 +61,8 @@ public class FlyingEnemy : Enemy
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
+
+    public override void Hit()
+    {
+    }
 }

@@ -227,8 +227,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathY: -20
+  forceX: 5
+  forceY: 5
+  newColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  waitTime: 0.3
+  farmerSprite: {fileID: 808251858165139694}
   enemyLayer: 12
-  deathYell: {fileID: 5927442711843711616}
 --- !u!82 &5927442711843711616
 AudioSource:
   m_ObjectHideFlags: 0
