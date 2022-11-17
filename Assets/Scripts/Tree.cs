@@ -12,7 +12,7 @@ public class Tree : MonoBehaviour
     public float forceX;
     public float forceY;
     public bool standing = true;
-    //public AudioSource treeFall;
+    public AudioSource treeFall;
     private Transform player;
 
     private void Start()
@@ -28,7 +28,7 @@ public class Tree : MonoBehaviour
         Debug.Log("HERE in ChopTree "+ standing);
         if (standing)
         {
-            //treeFall.Play();
+            treeFall.Play();
             rb.constraints = RigidbodyConstraints2D.None;
 
             if (transform.position.x > player.transform.position.x)

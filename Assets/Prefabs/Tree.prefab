@@ -134,6 +134,7 @@ MonoBehaviour:
   forceX: 5000
   forceY: 100
   standing: 1
+  treeFall: {fileID: 2524795160359048332}
 --- !u!50 &2782128656178208782
 Rigidbody2D:
   serializedVersion: 4

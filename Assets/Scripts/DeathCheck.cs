@@ -16,6 +16,7 @@ public class DeathCheck : MonoBehaviour
     private float waitTime = .3f;
     private float originalGravity;
     public int enemyLayer;
+    public AudioSource deathSound;
 
     private void Start()
     {
@@ -25,7 +26,6 @@ public class DeathCheck : MonoBehaviour
     }
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.gameObject.layer == enemyLayer)
         {
             if (other.gameObject.transform.position.x < transform.position.x)
@@ -34,6 +34,7 @@ public class DeathCheck : MonoBehaviour
                 GetComponent<Rigidbody2D>().drag = newDrag;
                 GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(forceX, forceY), transform.position);
                 farmerSprite.color = newColor;
+                deathSound.Play();
                 yield return new WaitForSeconds(waitTime);
                 farmerSprite.color = originalColor;
                 GetComponent<Rigidbody2D>().drag = 0;

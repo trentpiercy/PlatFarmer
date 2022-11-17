@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: Testing Level 2
-  success: {fileID: 0}
+  success: {fileID: 121867424030894390}
 --- !u!61 &6880770771281773409
 BoxCollider2D:
   m_ObjectHideFlags: 0
