@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Sapling : MonoBehaviour
 {
+    // Seed prefab
     public GameObject seed;
 
     public void Chop()
     {
-        Vector3 vec = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        Instantiate(seed, vec, Quaternion.Euler(0, 0, 0));
+        Instantiate(seed, transform.position, new Quaternion());
+
+        GameObject.FindGameObjectWithTag("Soil")
+            .GetComponent<SoilTilemap>().RemoveSeed(transform.position);
+
         Destroy(gameObject);
     }
 }

@@ -52,6 +52,21 @@ public class SoilTilemap : MonoBehaviour
         return true;
     }
 
+    public bool RemoveSeed(Vector3 position)
+    {
+        Vector3Int cell = soilTiles.WorldToCell(position);
+        cell.y--;
+
+        if (seedCells.Contains(cell))
+        {
+            seedCells.Remove(cell);
+            saplings.Remove(cell);
+            return true;
+        }
+
+        return false;
+    }
+
 
     public bool WaterSoil(Vector3 position)
     {
@@ -74,14 +89,16 @@ public class SoilTilemap : MonoBehaviour
     {
         if (seedCells.Contains(cell) && waterCells.Contains(cell))
         {
+            // Remove from dicts
             seedCells.Remove(cell);
             waterCells.Remove(cell);
 
-            // Remove water
+            // Set back to unwatered tile
             soilTiles.SetTile(cell, defaultSoilTile);
 
             // Destroy sapling for this cell
             Destroy(saplings[cell]);
+            saplings.Remove(cell);
 
             // Spawn in the tree
             Vector3 realPos = soilTiles.CellToWorld(cell);
