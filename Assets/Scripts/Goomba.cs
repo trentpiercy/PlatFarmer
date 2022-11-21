@@ -67,8 +67,17 @@ public class Goomba : Enemy
         rb.velocity = new Vector2(direction * moveSpeed, 0);
     }
 
-    public override void Hit()
+    public override void Hit(Transform player)
     {
-        Flip();
+        // If moving right and hit from right, flip
+        if (direction == 1 && player.position.x > transform.position.x)
+        {
+            Flip();
+        }
+        // If moving left and hit from left, flip
+        else if (direction == -1 && player.position.x < transform.position.x)
+        {
+            Flip();
+        }
     }
 }

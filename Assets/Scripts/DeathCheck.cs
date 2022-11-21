@@ -28,7 +28,7 @@ public class DeathCheck : MonoBehaviour
         if (other.gameObject.layer == enemyLayer)
         {
             // TODO this is not epic code
-            other.transform.parent.GetComponent<Enemy>().Hit();
+            other.transform.parent.GetComponent<Enemy>().Hit(transform);
 
             GetComponent<PlayerMovement>().enabled = false;
             farmerSprite.color = newColor;

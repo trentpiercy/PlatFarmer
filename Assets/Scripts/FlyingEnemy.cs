@@ -62,7 +62,7 @@ public class FlyingEnemy : Enemy
         }
     }
 
-    public override void Hit()
+    public override void Hit(Transform player)
     {
     }
 }
