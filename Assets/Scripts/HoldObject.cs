@@ -60,7 +60,6 @@ public class HoldObject : MonoBehaviour
 ;                        //heldItem.transform.position = playerHands.transform.position;
                         if (playerFaceForward)
                         {
-                            Debug.Log("axe should face forward");
                             heldItem.transform.position = playerHands.transform.position;
                             heldItem.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
                             Debug.Log(heldItem.transform.localScale);
@@ -68,7 +67,6 @@ public class HoldObject : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("axe should face backwards");
                             heldItem.transform.position = playerHands.transform.position;
                             heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
                             Debug.Log(heldItem.transform.localScale);
@@ -82,19 +80,15 @@ public class HoldObject : MonoBehaviour
                         heldItem.layer = LayerMask.NameToLayer("IgnorePlayer");
                         if (heldItem.transform.position.x > playerHands.transform.position.x - .2f)
                         {
-                            Debug.Log("item is ahead");
                             heldItem.transform.position = playerHands.transform.position + new Vector3(.5f, 0, 0);
                         }
                         else
                         {
-                            Debug.Log("you are ahead");
                             heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
                         }
                     }
-                    
                     else
                     {
-                        Debug.Log("axe should face backwards");
                         heldItem.transform.position = playerHands.transform.position;
                         heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
                         Debug.Log(heldItem.transform.localScale);
@@ -106,12 +100,10 @@ public class HoldObject : MonoBehaviour
                     heldItem.layer = LayerMask.NameToLayer("IgnorePlayer");
                     if (heldItem.transform.position.x > playerHands.transform.position.x - .2f)
                     {
-                        Debug.Log("item is ahead");
                         heldItem.transform.position = playerHands.transform.position + new Vector3(.5f, 0, 0);
                     }
                     else
                     {
-                        Debug.Log("you are ahead");
                         heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
                     }
                 }
@@ -132,7 +124,6 @@ public class HoldObject : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0))
             {
                 // Use item, drop if seed or water
-
                 if (heldItem.CompareTag("Seed"))
                 {
                     heldItem.GetComponent<Seed>().DropToPlant();
@@ -142,10 +133,6 @@ public class HoldObject : MonoBehaviour
                     StartCoroutine(ShowWaterCan());
                     heldItem.GetComponent<WaterDroplet>().DropToPlant();
                     DropItem();
-                } else if (heldItem.CompareTag("Axe"))
-                {
-                    heldItem.GetComponent<Axe>().Update();
-
                 }
             }
         }
@@ -170,7 +157,7 @@ public class HoldObject : MonoBehaviour
         }
         else if (heldItem.CompareTag("Log"))
         {
-            heldItem.layer = LayerMask.NameToLayer("Default");
+            heldItem.layer = LayerMask.NameToLayer("IgnoreIgnorePlayer");
         }
 
         heldItem = null;

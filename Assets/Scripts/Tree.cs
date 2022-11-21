@@ -17,6 +17,8 @@ public class Tree : MonoBehaviour
 
     private void Start()
     {
+        standing = true;
+
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
@@ -25,7 +27,7 @@ public class Tree : MonoBehaviour
     
     public void ChopTree()
     {
-        Debug.Log("HERE in ChopTree "+ standing);
+        Debug.Log("Standing: " + standing);
         if (standing)
         {
             treeFall.Play();
@@ -44,10 +46,9 @@ public class Tree : MonoBehaviour
         }
         else
         {
-            Vector3 vec = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            Instantiate(log, vec, Quaternion.Euler(0, 0, 0));
-            Instantiate(log, vec, Quaternion.Euler(0, 0, 0));
-            Instantiate(seed, vec, Quaternion.Euler(0, 0, 0));
+            //Instantiate(log, vec, Quaternion.Euler(0, 0, 0));
+            Instantiate(log, transform.position, new Quaternion());
+            Instantiate(seed, transform.position, new Quaternion());
 
             Destroy(gameObject);
         }

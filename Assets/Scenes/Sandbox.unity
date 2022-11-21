@@ -7557,7 +7557,7 @@ GameObject:
   - component: {fileID: 1108918853}
   m_Layer: 6
   m_Name: Soil Tilemap
-  m_TagString: Untagged
+  m_TagString: Soil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22952,14 +22952,6 @@ PrefabInstance:
     - target: {fileID: 2782128656178208783, guid: 7b45fef7b375e457290bb19b1f00be5b, type: 3}
       propertyPath: m_Name
       value: Tree (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782128656178208819, guid: 7b45fef7b375e457290bb19b1f00be5b, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1289087775}
-    - target: {fileID: 2782128656178208819, guid: 7b45fef7b375e457290bb19b1f00be5b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b45fef7b375e457290bb19b1f00be5b, type: 3}

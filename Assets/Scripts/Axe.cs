@@ -28,7 +28,6 @@ public class Axe : MonoBehaviour
         //Debug.Log("in hitcheck");
         // Check for hitting trees
         Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
-        Debug.Log("in hitcheck "+hitTrees);
 
         for (int i = 0; i < hitTrees.Length; i++)
         {
@@ -36,7 +35,6 @@ public class Axe : MonoBehaviour
             hitTrees[i].gameObject.GetComponent<Tree>().ChopTree();
             isChopping = false;
         }
-        Debug.Log("made it here");
         // Check for hitting enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, enemiesLayer);
         for (int i = 0; i < hitEnemies.Length; i++)
@@ -58,7 +56,6 @@ public class Axe : MonoBehaviour
     {
         // If not chopping and trying to, start chopping
         if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0) ) && !isChopping){
-            Debug.Log("in update");
             isChopping = true;
             transform.Rotate(new Vector3(0, 0, -axeChopDegrees));
             chopSound.Play();
