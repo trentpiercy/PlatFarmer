@@ -834,6 +834,7 @@ MonoBehaviour:
   swingLocation: {fileID: 0}
   swingRange: 1
   chopTime: 0.2
+  useTorch: {fileID: 0}
 --- !u!1 &423348981
 GameObject:
   m_ObjectHideFlags: 0

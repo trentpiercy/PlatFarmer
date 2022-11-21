@@ -105,6 +105,7 @@ MonoBehaviour:
   waterLocation: {fileID: 603179549725786124}
   waterRange: 0.3
   waterDrop: {fileID: 6031533281185090133}
+  waterCan: {fileID: 0}
 --- !u!212 &1316389119
 SpriteRenderer:
   m_ObjectHideFlags: 0

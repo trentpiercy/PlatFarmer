@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,8 @@ public class HoldObject : MonoBehaviour
 
     private GameObject heldItem;
     public LayerMask itemLayerMask;
+
+    public SpriteRenderer waterCan;
 
     void Update()
     {
@@ -136,6 +139,7 @@ public class HoldObject : MonoBehaviour
                     DropItem();
                 } else if (heldItem.CompareTag("Water"))
                 {
+                    StartCoroutine(ShowWaterCan());
                     heldItem.GetComponent<WaterDroplet>().DropToPlant();
                     DropItem();
                 } else if (heldItem.CompareTag("Axe"))
@@ -170,6 +174,12 @@ public class HoldObject : MonoBehaviour
         }
 
         heldItem = null;
+    }
 
+    private IEnumerator ShowWaterCan()
+    {
+        waterCan.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        waterCan.enabled = false;
     }
 }
