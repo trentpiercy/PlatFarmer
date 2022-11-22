@@ -17,7 +17,7 @@ public class HoldObject : MonoBehaviour
         if (heldItem == null)
         {
             // No held item
-            if ((Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
+            if (Binds.pickupDrop()
                 && GetComponent<Collider2D>().IsTouchingLayers(itemLayerMask))
             {
                 Debug.Log("Touching item");
@@ -57,21 +57,17 @@ public class HoldObject : MonoBehaviour
                         }
                         bool playerFaceForward = playerHands.transform.position.x > playerHands.transform.parent.position.x;
                         bool axAheadPlayer = heldItem.transform.position.x > playerHands.transform.parent.position.x;
-;                        //heldItem.transform.position = playerHands.transform.position;
                         if (playerFaceForward)
                         {
                             heldItem.transform.position = playerHands.transform.position;
                             heldItem.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
                             Debug.Log(heldItem.transform.localScale);
-
                         }
                         else
                         {
                             heldItem.transform.position = playerHands.transform.position;
                             heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
                             Debug.Log(heldItem.transform.localScale);
-
-
                         }
 
                     }
@@ -117,11 +113,11 @@ public class HoldObject : MonoBehaviour
         }
         else // Item already held
         {
-            if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(1))
+            if (Binds.pickupDrop())
             {
                 DropItem();
             }
-            else if (Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0))
+            else if (Binds.use())
             {
                 // Use item, drop if seed or water
                 if (heldItem.CompareTag("Seed"))

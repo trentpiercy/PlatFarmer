@@ -55,7 +55,7 @@ public class Axe : MonoBehaviour
     public void Update()
     {
         // If not chopping and trying to, start chopping
-        if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0) ) && !isChopping){
+        if (Binds.use() && !isChopping){
             isChopping = true;
             transform.Rotate(new Vector3(0, 0, -axeChopDegrees));
             chopSound.Play();

@@ -21,8 +21,16 @@ public class DeathCheck : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalColor = farmerSprite.color;
-
     }
+
+    private void Update()
+    {
+        if (transform.position.y < deathY)
+        {
+            GetComponent<PlayerHealth>().Respawn();
+        }
+    }
+
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == enemyLayer)
