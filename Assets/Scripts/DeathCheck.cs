@@ -28,6 +28,7 @@ public class DeathCheck : MonoBehaviour
         if (transform.position.y < deathY)
         {
             GetComponent<PlayerHealth>().Respawn();
+            deathSound.Play();
         }
     }
 
