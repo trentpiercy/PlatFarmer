@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4895178177752414132}
   - component: {fileID: 4895178177057414502}
   - component: {fileID: 5395365255019757522}
+  - component: {fileID: 4426587849158518866}
   m_Layer: 9
   m_Name: Axe
   m_TagString: Axe
@@ -119,6 +120,7 @@ MonoBehaviour:
   chopLocation: {fileID: 4895178177752414137}
   chopRange: 0.7
   chopTime: 0.2
+  chopCooldown: 2
   chopSound: {fileID: 5395365255019757522}
 --- !u!212 &4895178177752414139
 SpriteRenderer:
@@ -315,3 +317,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4426587849158518866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895178177752414133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f770e9b328b91014789b0dd8892d3b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
