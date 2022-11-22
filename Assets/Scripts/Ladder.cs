@@ -8,7 +8,6 @@ public class Ladder : MonoBehaviour
     private bool isClimbing;
 
     private Rigidbody2D player;
-    public AudioSource climbingSound;
 
     private void Start()
     {
@@ -32,6 +31,7 @@ public class Ladder : MonoBehaviour
             player.gravityScale = 0f;
             player.velocity = new Vector2(player.velocity.x, vertical * speed);
         }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
