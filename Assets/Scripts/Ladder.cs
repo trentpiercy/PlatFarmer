@@ -6,6 +6,8 @@ public class Ladder : MonoBehaviour
     private float speed = 6f;
     private bool isLadder;
     private bool isClimbing;
+    public AudioSource footsteps;
+    private bool soundPlaying = false;
 
     private Rigidbody2D player;
 
@@ -18,10 +20,36 @@ public class Ladder : MonoBehaviour
     {
         vertical = Input.GetAxisRaw("Vertical");
 
-        if (isLadder && Mathf.Abs(vertical) > 0f)
+        if (isLadder)
         {
-            isClimbing = true;
+            if (Mathf.Abs(vertical) > 0f)
+            {
+                isClimbing = true;
+                if (!soundPlaying)
+                {
+                    footsteps.Play();
+                    soundPlaying = true;
+                }
+            }
+            else
+                {
+                //isClimbing = false;
+                if (soundPlaying)
+                {
+                    footsteps.Stop();
+                    soundPlaying = false;
+                }
+                }
         }
+        else
+        {
+            if (soundPlaying)
+            {
+                footsteps.Stop();
+                soundPlaying = false;
+            }
+        }
+
     }
 
     private void FixedUpdate()
