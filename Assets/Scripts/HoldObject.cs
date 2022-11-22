@@ -9,7 +9,7 @@ public class HoldObject : MonoBehaviour
 
     private GameObject heldItem;
     public LayerMask itemLayerMask;
-
+    public AudioSource collectSound;
     public SpriteRenderer waterCan;
 
     void Update()
@@ -28,6 +28,7 @@ public class HoldObject : MonoBehaviour
                 heldItem = items[0].gameObject;
                 heldItem = heldItem.transform.parent.gameObject;
                 heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                collectSound.Play();
 
                 if (heldItem.CompareTag("Axe")||heldItem.CompareTag("Torch"))
                 {
