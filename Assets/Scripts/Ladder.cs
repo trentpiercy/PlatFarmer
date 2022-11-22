@@ -33,7 +33,6 @@ public class Ladder : MonoBehaviour
             }
             else
                 {
-                //isClimbing = false;
                 if (soundPlaying)
                 {
                     footsteps.Stop();
