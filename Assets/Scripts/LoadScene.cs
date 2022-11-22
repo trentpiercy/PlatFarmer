@@ -15,8 +15,14 @@ public class LoadScene : MonoBehaviour
         {
             success.Play();
             Debug.Log("At barn!");
-
-            SceneManager.LoadScene(nextLevel,LoadSceneMode.Single);
+            StartCoroutine(loadCoroutine());
         }
+    }
+
+    IEnumerator loadCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+
     }
 }
