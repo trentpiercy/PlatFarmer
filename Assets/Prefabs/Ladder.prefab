@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5205472fc06f44fa4a464306ebcf9848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  climbingSound: {fileID: 7204275323708454911}
+  footsteps: {fileID: 7204275323708454911}
 --- !u!82 &7204275323708454911
 AudioSource:
   m_ObjectHideFlags: 0
@@ -136,11 +136,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2c2fa1edc076940b08af8cadace4e0a1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b2152e33337a34baaaf262658e8d397f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

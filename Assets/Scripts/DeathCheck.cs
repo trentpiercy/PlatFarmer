@@ -12,6 +12,7 @@ public class DeathCheck : MonoBehaviour
     public float waitTime = 0.3f;
     public SpriteRenderer farmerSprite;
     public int enemyLayer;
+    public int waterLayer;
     public AudioSource deathSound;
 
     Color originalColor;
@@ -36,8 +37,10 @@ public class DeathCheck : MonoBehaviour
 
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == enemyLayer)
+        if (other.gameObject.layer == enemyLayer || 
+            other.gameObject.layer == waterLayer)
         {
+            Debug.Log("On Water");
             // TODO this is not epic code
             other.transform.parent.GetComponent<Enemy>().Hit(transform);
             loseLife();
