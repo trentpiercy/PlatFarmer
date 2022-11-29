@@ -6,11 +6,9 @@ public class HoldObject : MonoBehaviour
 {
     // Reference to where you want your object to go
     public GameObject playerHands;
-    public GameObject waterDrop;
-    public BoxCollider2D waterCheck;
+
     private GameObject heldItem;
     public LayerMask itemLayerMask;
-    public LayerMask waterLayerMask;
     public AudioSource collectSound;
     public SpriteRenderer waterCan;
 
@@ -32,7 +30,7 @@ public class HoldObject : MonoBehaviour
                 heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                 collectSound.Play();
 
-                if (heldItem.CompareTag("Axe") || heldItem.CompareTag("Torch"))
+                if (heldItem.CompareTag("Axe")||heldItem.CompareTag("Torch"))
                 {
                     if (heldItem.CompareTag("Axe"))
                     {
@@ -43,13 +41,48 @@ public class HoldObject : MonoBehaviour
                         heldItem.GetComponent<Torch>().enabled = true;
                     }
 
-                    bool playerFaceForward = playerHands.transform.position.x > playerHands.transform.parent.position.x;
-                    bool axAheadPlayer = heldItem.transform.position.x > playerHands.transform.parent.position.x;
-                    if (playerFaceForward)
+                    if (items.Length == 0) return;
+                    // Pickup the first item
+                    heldItem = items[0].gameObject;
+                    heldItem = heldItem.transform.parent.gameObject;
+                    heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                    if (heldItem.CompareTag("Axe") || heldItem.CompareTag("Torch"))
                     {
-                        heldItem.transform.position = playerHands.transform.position;
-                        heldItem.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                        Debug.Log(heldItem.transform.localScale);
+                        if (heldItem.CompareTag("Axe"))
+                        {
+                            heldItem.GetComponent<Axe>().enabled = true;
+                        }
+                        if (heldItem.CompareTag("Torch"))
+                        {
+                            heldItem.GetComponent<Torch>().enabled = true;
+                        }
+                        bool playerFaceForward = playerHands.transform.position.x > playerHands.transform.parent.position.x;
+                        bool axAheadPlayer = heldItem.transform.position.x > playerHands.transform.parent.position.x;
+                        if (playerFaceForward)
+                        {
+                            heldItem.transform.position = playerHands.transform.position;
+                            heldItem.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+                            Debug.Log(heldItem.transform.localScale);
+                        }
+                        else
+                        {
+                            heldItem.transform.position = playerHands.transform.position;
+                            heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
+                            Debug.Log(heldItem.transform.localScale);
+                        }
+
+                    }
+                    else if (heldItem.CompareTag("Log"))
+                    {
+                        heldItem.layer = LayerMask.NameToLayer("IgnorePlayer");
+                        if (heldItem.transform.position.x > playerHands.transform.position.x - .2f)
+                        {
+                            heldItem.transform.position = playerHands.transform.position + new Vector3(.5f, 0, 0);
+                        }
+                        else
+                        {
+                            heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
+                        }
                     }
                     else
                     {
@@ -57,6 +90,7 @@ public class HoldObject : MonoBehaviour
                         heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
                         Debug.Log(heldItem.transform.localScale);
                     }
+
                 }
                 else if (heldItem.CompareTag("Log"))
                 {
@@ -70,25 +104,14 @@ public class HoldObject : MonoBehaviour
                         heldItem.transform.position = playerHands.transform.position + new Vector3(-.5f, 0, 0);
                     }
                 }
+              
                 else
                 {
-                    heldItem.transform.position = playerHands.transform.position;
-                    //heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
-                    Debug.Log(heldItem.transform.localScale);
+                    heldItem.transform.position = playerHands.transform.position; // sets the position of the object to your hand position
                 }
                 heldItem.transform.parent = playerHands.transform;// makes the object become a child of the parent so that it moves with the hands
             }
-
-            else if (Binds.pickupDrop() && waterCheck.IsTouchingLayers(waterLayerMask))
-            {
-                Debug.Log("trying to pick up water");
-                heldItem = Instantiate(waterDrop);
-                heldItem.transform.position = playerHands.transform.position;
-                heldItem.transform.parent = playerHands.transform;
-                heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            }
         }
-
         else // Item already held
         {
             if (Binds.pickupDrop())
@@ -102,8 +125,7 @@ public class HoldObject : MonoBehaviour
                 {
                     heldItem.GetComponent<Seed>().DropToPlant();
                     DropItem();
-                }
-                else if (heldItem.CompareTag("Water"))
+                } else if (heldItem.CompareTag("Water"))
                 {
                     StartCoroutine(ShowWaterCan());
                     heldItem.GetComponent<WaterDroplet>().DropToPlant();
@@ -113,6 +135,7 @@ public class HoldObject : MonoBehaviour
         }
     }
 
+    // Physically drop the held item
     private void DropItem()
     {
         Debug.Assert(heldItem != null);
