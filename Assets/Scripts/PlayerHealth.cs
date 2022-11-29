@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     private CharacterController2D controller;
     public Vector3 lastGroundedPos;
+    public int hp;
+    public static int totalHealth = 3;
 
     private void Start()
     {
+        hp = 3;
         controller = GetComponent<CharacterController2D>();
         StartCoroutine(SpawnPoint());
     }
@@ -30,5 +34,14 @@ public class PlayerHealth : MonoBehaviour
     public void Respawn()
     {
         transform.position = lastGroundedPos;
+    }
+    private void Update()
+    {
+        //// Restart
+        if (hp <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        
     }
 }
