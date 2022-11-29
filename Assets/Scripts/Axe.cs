@@ -16,7 +16,7 @@ public class Axe : MonoBehaviour
 
     // How long to chop for and show animation
     public float chopTime = 0.2f;
-    public int chopCooldown = 2;
+    public float chopCooldown = 0.1f;
 
     // Angle to rotate axe to when chopping
     private readonly float axeChopDegrees = 60;
