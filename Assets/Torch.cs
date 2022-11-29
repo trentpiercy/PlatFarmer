@@ -34,7 +34,6 @@ public class Torch : MonoBehaviour
         Collider2D[] hitTrees = Physics2D.OverlapCircleAll(swingLocation.position, swingRange, treesLayer);
         for (int i = 0; i < hitTrees.Length; i++)
         {
-            useTorch.Play();
             Debug.Log("burn tree");
             StartCoroutine(hitTrees[i].gameObject.GetComponent<Tree>().Burn());
             isUsing = false;
@@ -44,7 +43,6 @@ public class Torch : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swingLocation.position, swingRange, enemiesLayer);
         for (int i = 0; i < hitEnemies.Length; i++)
         {
-            useTorch.Play();
             Debug.Log("Hit enemy!");
             StartCoroutine(hitEnemies[i].gameObject.GetComponent<Enemy>().Burn());
 
@@ -59,7 +57,7 @@ public class Torch : MonoBehaviour
 
             isUsing = true;
             transform.Rotate(new Vector3(0, 0, -torchSwingDegrees));
-
+            useTorch.Play();
             StartCoroutine(ChopWait());
         }
 
@@ -75,6 +73,7 @@ public class Torch : MonoBehaviour
         yield return new WaitForSeconds(chopTime);
 
         transform.Rotate(new Vector3(0, 0, torchSwingDegrees));
+        useTorch.Stop();
         isUsing = false;
     }
 }

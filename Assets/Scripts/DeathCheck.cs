@@ -43,6 +43,7 @@ public class DeathCheck : MonoBehaviour
             other.transform.parent.GetComponent<Enemy>().Hit(transform);
 
             GetComponent<PlayerMovement>().enabled = false;
+            deathSound.Play();
             farmerSprite.color = newColor;
 
             if (other.gameObject.transform.position.x < transform.position.x)
