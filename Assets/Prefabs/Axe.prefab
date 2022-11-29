@@ -120,7 +120,7 @@ MonoBehaviour:
   chopLocation: {fileID: 4895178177752414137}
   chopRange: 0.7
   chopTime: 0.2
-  chopCooldown: 0.5
+  chopCooldown: 0.1
   chopSound: {fileID: 5395365255019757522}
 --- !u!212 &4895178177752414139
 SpriteRenderer:
