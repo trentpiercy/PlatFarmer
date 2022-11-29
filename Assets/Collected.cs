@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 public class Collected : MonoBehaviour
 {
+    public GameObject player;
     static int numCollected = 0;
+    static int damageTaken = 0;
     static Image[] gems;
     public Image[] setGems;
+    static Image[] hearts;
+    public Image[] setHearts;
 
     public static void gemCollected()
     {
@@ -16,8 +20,14 @@ public class Collected : MonoBehaviour
         numCollected++;
     }
 
+    public static void setHeartColor(int heart, Color color)
+    {
+        hearts[heart].color = color;
+    }
+
     private void Start()
     {
+        hearts = setHearts;
         gems = setGems;
     }
 

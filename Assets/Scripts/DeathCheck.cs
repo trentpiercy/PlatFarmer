@@ -17,18 +17,20 @@ public class DeathCheck : MonoBehaviour
     Color originalColor;
     Rigidbody2D rb;
 
+    PlayerHealth playerHealth;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         originalColor = farmerSprite.color;
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void Update()
     {
         if (transform.position.y < deathY)
         {
-            GetComponent<PlayerHealth>().Respawn();
-            deathSound.Play();
+            loseLife();
         }
     }
 
@@ -38,7 +40,7 @@ public class DeathCheck : MonoBehaviour
         {
             // TODO this is not epic code
             other.transform.parent.GetComponent<Enemy>().Hit(transform);
-
+            loseLife();
             GetComponent<PlayerMovement>().enabled = false;
             farmerSprite.color = newColor;
 
@@ -55,9 +57,24 @@ public class DeathCheck : MonoBehaviour
 
             farmerSprite.color = originalColor;
             GetComponent<PlayerMovement>().enabled = true;
+            
 
             //// Restart
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void loseLife()
+    {
+        playerHealth.Respawn();
+        playerHealth.hp -= 1;
+
+        if (playerHealth.hp == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        Collected.setHeartColor(playerHealth.hp, Color.black);
+        deathSound.Play();
     }
 }
