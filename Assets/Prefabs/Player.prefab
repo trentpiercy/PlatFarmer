@@ -210,7 +210,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 73
+    m_Bits: 32841
   m_GroundCheck: {fileID: 808251858034460605}
   m_CeilingCheck: {fileID: 808251856572385793}
   m_CrouchDisableCollider: {fileID: 0}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 808251857168960135}
-  runSpeed: 25
+  runSpeed: 30
   footsteps: {fileID: 8142942187286345227}
 --- !u!114 &808251857168960185
 MonoBehaviour:
@@ -324,7 +324,7 @@ MonoBehaviour:
   waitTime: 0.3
   farmerSprite: {fileID: 808251858165139694}
   enemyLayer: 12
-  waterLayer: 0
+  waterLayer: 16
   deathSound: {fileID: 5927442711843711616}
 --- !u!82 &5927442711843711616
 AudioSource:
