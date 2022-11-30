@@ -4,63 +4,79 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public class SoilTile
+{
+    public bool isWatered;
+    public Seed seed;
+    public GameObject sapling;
+    public Vector3Int cell;
+
+    public SoilTile(Vector3Int cell)
+    {
+        this.isWatered = false;
+        this.seed = null;
+        this.sapling = null;
+        this.cell = cell;
+    }
+}
+
 public class SoilTilemap : MonoBehaviour
 {
-    private Tilemap soilTiles;
+    private Tilemap soilTilemap;
 
-    // Keep track of cells with seeds and water
-    private HashSet<Vector3Int> seedCells = new();
-    private HashSet<Vector3Int> waterCells = new();
-
-    // Keep track of instantiated saplings so we can destroy them
-    // cellPos -> sapling object
-    private Dictionary<Vector3Int, GameObject> saplings = new();
+    // Keep track of soilTiles
+    // cellPos -> soilTile object
+    private Dictionary<Vector3Int, SoilTile> soilTiles = new();
 
     public Tile wateredSoilTile;
     public Tile defaultSoilTile;
 
-    public GameObject saplingPrefab;
-    public GameObject treePrefab;
-
-    // Offset to instanitate sapling with
-    public Vector3 saplingOffset;
-    public Vector3 treeOffset;
-
     private void Start()
     {
-        soilTiles = GetComponent<Tilemap>();
+        soilTilemap = GetComponent<Tilemap>();
         Debug.Assert(wateredSoilTile != null);
-        Debug.Assert(saplingPrefab != null);
-        Debug.Assert(treePrefab != null);
     }
 
-    public bool PlantSeed(Vector3 position)
+    public SoilTile GetSoilTile(Vector3 position)
     {
-        Vector3Int cell = soilTiles.WorldToCell(position);
+        Vector3Int cell = soilTilemap.WorldToCell(position);
         cell.y--;
+        if (soilTiles.ContainsKey(cell))
+        {
+            return soilTiles[cell];
+        }
+        // Create new SoilTile if not exist
+        SoilTile soilTile = new SoilTile(cell);
+        soilTiles.Add(cell, soilTile);
 
-        if (seedCells.Contains(cell)) 
+        return soilTile;
+    }
+
+    public bool PlantSeed(Seed seed, Vector3 position)
+    {
+        SoilTile soilTile = GetSoilTile(position);
+
+        if (soilTile.sapling)
             return false;
-        seedCells.Add(cell);
+        soilTile.seed = seed;
 
-        Vector3 saplingPos = soilTiles.CellToWorld(cell) + saplingOffset;
-        GameObject sapling = Instantiate(saplingPrefab, saplingPos, new Quaternion());
-        saplings.Add(cell, sapling);
+        Vector3 saplingPos = soilTilemap.CellToWorld(soilTile.cell) + seed.saplingOffset;
+        GameObject sapling = Instantiate(seed.saplingPrefab, saplingPos, new Quaternion());
+        soilTile.sapling = sapling;
 
-        TryGrowTree(cell);
+        TryGrowTree(soilTile);
 
         return true;
     }
 
     public bool RemoveSeed(Vector3 position)
     {
-        Vector3Int cell = soilTiles.WorldToCell(position);
-        cell.y--;
+        SoilTile soilTile = GetSoilTile(position);
 
-        if (seedCells.Contains(cell))
+        if (soilTile.sapling)
         {
-            seedCells.Remove(cell);
-            saplings.Remove(cell);
+            soilTile.sapling = null;
+            soilTile.seed = null;
             return true;
         }
 
@@ -70,39 +86,38 @@ public class SoilTilemap : MonoBehaviour
 
     public bool WaterSoil(Vector3 position)
     {
-        Vector3Int cell = soilTiles.WorldToCell(position);
-        cell.y--;
+        SoilTile soilTile = GetSoilTile(position);
 
-        if (waterCells.Contains(cell))
+        if (soilTile.isWatered)
             return false;
-        waterCells.Add(cell);
+        Debug.Log("Watered!");
+        soilTile.isWatered = true;
 
-        soilTiles.SetTile(cell, wateredSoilTile);
-
-        TryGrowTree(cell);
+        soilTilemap.SetTile(soilTile.cell, wateredSoilTile);
+        TryGrowTree(soilTile);
 
         return true;
     }
 
-    
-    private bool TryGrowTree(Vector3Int cell)
+
+    private bool TryGrowTree(SoilTile soilTile)
     {
-        if (seedCells.Contains(cell) && waterCells.Contains(cell))
+        if (soilTile.sapling && soilTile.isWatered)
         {
-            // Remove from dicts
-            seedCells.Remove(cell);
-            waterCells.Remove(cell);
+            Debug.Log("Growing Tree!");
 
             // Set back to unwatered tile
-            soilTiles.SetTile(cell, defaultSoilTile);
+            soilTile.isWatered = false;
+            soilTilemap.SetTile(soilTile.cell, defaultSoilTile);
 
             // Destroy sapling for this cell
-            Destroy(saplings[cell]);
-            saplings.Remove(cell);
+            Destroy(soilTile.sapling);
+            soilTile.sapling = null;
 
             // Spawn in the tree
-            Vector3 realPos = soilTiles.CellToWorld(cell);
-            Instantiate(treePrefab, realPos + treeOffset, Quaternion.identity);
+            Vector3 realPos = soilTilemap.CellToWorld(soilTile.cell);
+            Instantiate(soilTile.seed.treePrefab, realPos + soilTile.seed.treeOffset, Quaternion.identity);
+            soilTile.seed = null;
 
             return true;
         }

@@ -17,6 +17,20 @@ public class Seed : MonoBehaviour
     public float plantRange;
     public AudioSource seedFall;
 
+    // Prefabs
+    public GameObject saplingPrefab;
+    public GameObject treePrefab;
+
+    // Offset to instanitate sapling with
+    public Vector3 saplingOffset;
+    public Vector3 treeOffset;
+
+    private void Start()
+    {
+        Debug.Assert(saplingPrefab != null);
+        Debug.Assert(treePrefab != null);
+    }
+
     public void DropToPlant()
     {
         StartCoroutine(DropRoutine());
@@ -43,7 +57,7 @@ public class Seed : MonoBehaviour
             if (hitSoils.Length > 0)
             {
                 SoilTilemap soil = hitSoils[0].gameObject.GetComponent<SoilTilemap>();
-                if (soil.PlantSeed(transform.position))
+                if (soil.PlantSeed(this, transform.position))
                 {
                     Destroy(gameObject);
 

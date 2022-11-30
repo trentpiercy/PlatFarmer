@@ -105,6 +105,10 @@ MonoBehaviour:
   plantLocation: {fileID: 4495781485620617508}
   plantRange: 0.3
   seedFall: {fileID: 3358126970021442429}
+  saplingPrefab: {fileID: 2181867245955998015, guid: b1564b28f45c70b4695011ab42020017, type: 3}
+  treePrefab: {fileID: 2782128656178208783, guid: 7b45fef7b375e457290bb19b1f00be5b, type: 3}
+  saplingOffset: {x: 0.5, y: 1.35, z: 0}
+  treeOffset: {x: 0.5, y: 2.5, z: 0}
 --- !u!212 &22402538
 SpriteRenderer:
   m_ObjectHideFlags: 0
