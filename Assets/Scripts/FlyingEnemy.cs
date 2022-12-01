@@ -18,6 +18,7 @@ public class FlyingEnemy : Enemy
 
     public override void Attacked()
     {
+        Debug.Log("Destroying");
         Destroy(gameObject);
     }
 
@@ -43,7 +44,7 @@ public class FlyingEnemy : Enemy
     }
     private void ReturnToSpawnPoint()
     {
-        transform.position = Vector2.MoveTowards(transform.position, startingPoint.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, startingPoint.position, (speed+4) * Time.deltaTime);
 
     }
     private void Chase()
@@ -61,8 +62,16 @@ public class FlyingEnemy : Enemy
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
-
+    private IEnumerator EnemyRecoil()
+    {
+        Debug.Log("did we do it");
+        target = false;
+        yield return new WaitForSeconds(1);
+        target = true;
+    }
     public override void Hit(Transform player)
     {
+        Debug.Log("HERE");
+        StartCoroutine(EnemyRecoil());
     }
 }

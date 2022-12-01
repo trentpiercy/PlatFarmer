@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraGrow : MonoBehaviour
@@ -7,6 +8,7 @@ public class CameraGrow : MonoBehaviour
     public LayerMask playerLayer;
 
     public float zoomSpeed = 6;
+    public float normalSize = 8;
 
     private Camera cam;
 
@@ -28,9 +30,9 @@ public class CameraGrow : MonoBehaviour
         else
         {
             cam.orthographicSize -= zoomSpeed * Time.deltaTime;
-            if (cam.orthographicSize < 5)
+            if (cam.orthographicSize < normalSize)
             {
-                cam.orthographicSize = 5; // Max size
+                cam.orthographicSize = normalSize; // Max size
             }
 
         }
