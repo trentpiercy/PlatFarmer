@@ -37,7 +37,7 @@ public class DeathCheck : MonoBehaviour
 
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == enemyLayer | other.gameObject.layer == waterLayer)
+        if (other.gameObject.layer == enemyLayer)
         {
             // TODO this is not epic code
             other.transform.parent.GetComponent<Enemy>().Hit(transform);
