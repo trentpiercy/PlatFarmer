@@ -52933,7 +52933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateredSoilTile: {fileID: 11400000, guid: 2a34f54beaa8ac7418aec3ac2dcb6901, type: 2}
-  defaultSoilTile: {fileID: 11400000, guid: fd0fe2c20529e9945ae537b7cf93f845, type: 2}
+  defaultSoilTile: {fileID: 11400000, guid: 6631a45c64c146f49ad96df0e5d96aac, type: 2}
 --- !u!1001 &1142682006
 PrefabInstance:
   m_ObjectHideFlags: 0
