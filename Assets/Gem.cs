@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Collectible : MonoBehaviour
+public class Gem : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {

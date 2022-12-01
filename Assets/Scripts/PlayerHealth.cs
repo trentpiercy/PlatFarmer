@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     private CharacterController2D controller;
     public Vector3 lastGroundedPos;
     public int hp;
-    public static int totalHealth = 3;
+    public int totalHealth = 3;
 
     private void Start()
     {

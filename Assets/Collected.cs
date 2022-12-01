@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Collected : MonoBehaviour
 {
+    static PlayerHealth playerHealth;
+    public PlayerHealth setPlayerHealth;
     static int numCollected = 0;
     static Image[] gems;
     public Image[] setGems;
@@ -16,6 +18,7 @@ public class Collected : MonoBehaviour
     {
         hearts = setHearts;
         gems = setGems;
+        playerHealth = setPlayerHealth;
     }
 
     public static void gemCollected()
@@ -23,22 +26,19 @@ public class Collected : MonoBehaviour
         gems[numCollected].color = Color.white;
         numCollected++;
     }
-    //public static void gainLife()
-    //{
-    //    playerHealth.hp += 1;
-    //    Collected.setHeartColor(playerHealth.hp, Color.white);
-    //}
+    public static void gainLife(GameObject heartItem)
+    {
+        if (playerHealth.hp < playerHealth.totalHealth)
+        {
+            playerHealth.hp += 1;
+            Collected.setHeartColor(playerHealth.hp-1, Color.white);
+            Destroy(heartItem);
+        }
+
+    }
 
     public static void setHeartColor(int heart, Color color)
     {
         hearts[heart].color = color;
     }
-
-
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    GetComponentInChildren<TextMeshProUGUI>().SetText("Collected {0} of {1}", numCollected, totalAvailable);
-    //}
 }
