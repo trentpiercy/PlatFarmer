@@ -13,7 +13,7 @@ public class ItemRespawn : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -20 && transform.parent == null)
+        if (transform.position.y < -40 && transform.parent == null)
         {
             transform.position = initialPos;
         }

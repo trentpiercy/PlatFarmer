@@ -44,7 +44,8 @@ public class DeathCheck : MonoBehaviour
 
             // Tell enemy we hit it
             // TODO this is not epic code, always assuming enemy is parent of trigger
-            if (other.transform.parent.TryGetComponent(out Enemy enemy))
+            if (other.transform.parent != null && 
+                other.transform.parent.TryGetComponent(out Enemy enemy))
             {
                 Debug.Log("valid enemy hit");
                 enemy.Hit(transform);
