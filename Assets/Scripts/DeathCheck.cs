@@ -32,59 +32,63 @@ public class DeathCheck : MonoBehaviour
         if (transform.position.y < deathY)
         {
             LoseLife();
+            playerHealth.Respawn();
         }
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == enemyLayer)
         {
+            Debug.Log("Hit Enemy!");
+
             // Tell enemy we hit it
-            // TODO this is not epic code
-            var enemy = other.transform.parent.GetComponent<Enemy>();
-            enemy.Hit(transform);
-
-            // Make player lose a life
-            LoseLife();
-
-            // Disable movement temporarily
-            GetComponent<PlayerMovement>().enabled = false;
-
-            // Play hit sound
-            deathSound.Play();
-
-            // Hit color
-            farmerSprite.color = newColor;
-
-            // Bounce the player back
-            if (other.gameObject.transform.position.x < transform.position.x)
+            // TODO this is not epic code, always assuming enemy is parent of trigger
+            if (other.transform.parent.TryGetComponent(out Enemy enemy))
             {
-                rb.AddForce(new Vector2(forceX, forceY));
-                //rb.velocity = new Vector2(forceX, forceY);
+                Debug.Log("valid enemy hit");
+                enemy.Hit(transform);
+
+                LoseLife();
+                StartCoroutine(HitEnemy(other.transform));
             }
-            else
-            {
-                rb.AddForce(new Vector2(-forceX, forceY));
-                //rb.velocity = new Vector2(-forceX, forceY);
-            }
-
-            yield return new WaitForSeconds(waitTime);
-
-            // Back to original color
-            farmerSprite.color = originalColor;
-
-            // Re-enable movement
-            GetComponent<PlayerMovement>().enabled = true;
-            
 
             // Restart
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
+    private IEnumerator HitEnemy(Transform enemy)
+    {
+        // Disable movement temporarily
+        GetComponent<PlayerMovement>().enabled = false;
+
+        // Hit color
+        farmerSprite.color = newColor;
+
+        // Bounce the player back
+        if (enemy.position.x < transform.position.x)
+        {
+            //rb.AddForce(new Vector2(forceX, forceY));
+            rb.velocity = new Vector2(forceX, forceY);
+        }
+        else
+        {
+            //rb.AddForce(new Vector2(-forceX, forceY));
+            rb.velocity = new Vector2(-forceX, forceY);
+        }
+
+        yield return new WaitForSeconds(waitTime);
+
+        // Back to original color
+        farmerSprite.color = originalColor;
+
+        // Re-enable movement
+        GetComponent<PlayerMovement>().enabled = true;
+    }
+
     private void LoseLife()
     {
-        playerHealth.Respawn();
         playerHealth.hp -= 1;
 
         if (playerHealth.hp == 0)
