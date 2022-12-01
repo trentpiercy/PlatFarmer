@@ -21,7 +21,6 @@ public class Axe : MonoBehaviour
     // Angle to rotate axe to when chopping
     private readonly float axeChopDegrees = 60;
     private float axeCurrentAngle = 0;
-    private float axeRotateSpeed = 2;
 
     private bool isChopping = false;
     private bool isCoolingdown = false;

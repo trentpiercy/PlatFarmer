@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class Collected : MonoBehaviour
 {
-    PlayerHealth playerHealth;
     static int numCollected = 0;
-    static int damageTaken = 0;
     static Image[] gems;
     public Image[] setGems;
     static Image[] hearts;

@@ -48,13 +48,13 @@ public class HoldObject : MonoBehaviour
                     if (playerFaceForward)
                     {
                         heldItem.transform.position = playerHands.transform.position;
-                        heldItem.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                        //heldItem.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                         Debug.Log(heldItem.transform.localScale);
                     }
                     else
                     {
                         heldItem.transform.position = playerHands.transform.position;
-                        heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
+                        //heldItem.transform.localScale = new Vector3(0.5f, -0.5f, 0.5f);
                         Debug.Log(heldItem.transform.localScale);
                     }
                 }

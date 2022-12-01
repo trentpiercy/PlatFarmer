@@ -12,6 +12,8 @@ public class Goomba : Enemy
     int direction = -1;
     Rigidbody2D rb;
 
+    bool burning = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,10 +26,19 @@ public class Goomba : Enemy
         Destroy(gameObject);
     }
 
-    public override IEnumerator Burn()
+    public override void Burn()
+    {
+       if (!burning)
+        {
+            burning = true;
+            StartCoroutine(BurnRoutine());
+        }
+    }
+
+    private IEnumerator BurnRoutine()
     {
         GetComponent<SpriteRenderer>().color = burnColor;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 

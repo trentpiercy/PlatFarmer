@@ -31,7 +31,7 @@ public class DeathCheck : MonoBehaviour
     {
         if (transform.position.y < deathY)
         {
-            loseLife();
+            LoseLife();
         }
     }
 
@@ -39,34 +39,50 @@ public class DeathCheck : MonoBehaviour
     {
         if (other.gameObject.layer == enemyLayer)
         {
+            // Tell enemy we hit it
             // TODO this is not epic code
-            other.transform.parent.GetComponent<Enemy>().Hit(transform);
-            loseLife();
+            var enemy = other.transform.parent.GetComponent<Enemy>();
+            enemy.Hit(transform);
+
+            // Make player lose a life
+            LoseLife();
+
+            // Disable movement temporarily
             GetComponent<PlayerMovement>().enabled = false;
+
+            // Play hit sound
             deathSound.Play();
+
+            // Hit color
             farmerSprite.color = newColor;
 
+            // Bounce the player back
             if (other.gameObject.transform.position.x < transform.position.x)
             {
-                rb.velocity = new Vector2(forceX, forceY);
+                rb.AddForce(new Vector2(forceX, forceY));
+                //rb.velocity = new Vector2(forceX, forceY);
             }
             else
             {
-                rb.velocity = new Vector2(-forceX, forceY);
+                rb.AddForce(new Vector2(-forceX, forceY));
+                //rb.velocity = new Vector2(-forceX, forceY);
             }
 
             yield return new WaitForSeconds(waitTime);
 
+            // Back to original color
             farmerSprite.color = originalColor;
+
+            // Re-enable movement
             GetComponent<PlayerMovement>().enabled = true;
             
 
-            //// Restart
+            // Restart
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
-    private void loseLife()
+    private void LoseLife()
     {
         playerHealth.Respawn();
         playerHealth.hp -= 1;

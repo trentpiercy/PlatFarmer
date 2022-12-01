@@ -9,6 +9,7 @@ public class FlyingEnemy : Enemy
     public Color newColor;
     public Transform startingPoint;
     private GameObject player;
+    bool burning = false;
 
     
     void Start()
@@ -22,7 +23,16 @@ public class FlyingEnemy : Enemy
         Destroy(gameObject);
     }
 
-    public override IEnumerator Burn()
+    public override void Burn()
+    {
+        if (!burning)
+        {
+            burning = true;
+            StartCoroutine(BurnRoutine());
+        }
+    }
+
+    private IEnumerator BurnRoutine()
     {   
         GetComponent<SpriteRenderer>().color = newColor;
         yield return new WaitForSeconds(2);

@@ -35,7 +35,7 @@ public class Torch : MonoBehaviour
         for (int i = 0; i < hitTrees.Length; i++)
         {
             Debug.Log("burn tree");
-            StartCoroutine(hitTrees[i].gameObject.GetComponent<Tree>().Burn());
+            hitTrees[i].gameObject.GetComponent<Tree>().Burn();
             isUsing = false;
         }
 
@@ -44,8 +44,13 @@ public class Torch : MonoBehaviour
         for (int i = 0; i < hitEnemies.Length; i++)
         {
             Debug.Log("Hit enemy!");
-            StartCoroutine(hitEnemies[i].gameObject.GetComponent<Enemy>().Burn());
 
+            if (hitEnemies[i].gameObject.TryGetComponent(out Enemy enemy))
+            {
+                enemy.Burn();
+                enemy.Hit(transform);
+                isUsing = false;
+            }
         }
     }
 
