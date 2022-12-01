@@ -60,7 +60,7 @@ public class Axe : MonoBehaviour
     public void Update()
     {
         // If not chopping and trying to, start chopping
-        if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0)) && !isChopping && !isCoolingdown)
+        if (Binds.use() && !isChopping && !isCoolingdown)
         {
             Debug.Log("in update");
             isChopping = true;
