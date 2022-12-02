@@ -45,7 +45,10 @@ public class Axe : MonoBehaviour
         for (int i = 0; i < hitEnemies.Length; i++)
         {
             Debug.Log("Hit enemy!");
-            hitEnemies[i].gameObject.GetComponent<Enemy>().Attacked();
+            if (hitEnemies[i].gameObject.TryGetComponent(out Enemy enemy))
+            {
+                enemy.Attacked();
+            }
         }
 
         // Check for hitting saplings
