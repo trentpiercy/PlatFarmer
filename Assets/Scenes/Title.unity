@@ -2694,7 +2694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76b1d516b2d74edbaa9263455eab91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level 1
+  sceneName: SandboxPlaytest
 --- !u!4 &1923048356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6880770771281773415, guid: 47d5236d746f0714ca978cbadd97514c, type: 3}
@@ -3031,7 +3031,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6880770771281773410, guid: 47d5236d746f0714ca978cbadd97514c, type: 3}
       propertyPath: nextLevel
-      value: Level 1
+      value: SandboxPlaytest
       objectReference: {fileID: 0}
     - target: {fileID: 6880770771281773413, guid: 47d5236d746f0714ca978cbadd97514c, type: 3}
       propertyPath: m_Name
