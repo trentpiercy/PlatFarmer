@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d2453216bc04a66be60a569176e9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 3
   target: 0
   newColor: {r: 1, g: 0, b: 0, a: 1}
   startingPoint: {fileID: 6205375990367498861}
