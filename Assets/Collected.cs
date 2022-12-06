@@ -3,44 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Collected : MonoBehaviour
 {
     static PlayerHealth playerHealth;
     public PlayerHealth setPlayerHealth;
     static int numCollected = 0;
+
     static Image[] gems;
     public Image[] setGems;
     static Image[] hearts;
     public Image[] setHearts;
     //static AudioSource collectSound;
 
+    public string setWinScene;
+    static string winScene;
+
     private void Start()
     {
         hearts = setHearts;
         gems = setGems;
         playerHealth = setPlayerHealth;
+        winScene = setWinScene;
     }
 
-    public static void gemCollected()
+    public static void GemCollected()
     {
         //collectSound.Play();
         gems[numCollected].color = Color.white;
         numCollected++;
+
+        if (numCollected == gems.Length)
+        {
+            SceneManager.LoadScene(winScene, LoadSceneMode.Single);
+        }
     }
-    public static void gainLife(GameObject heartItem)
+
+    public static void GainLife(GameObject heartItem)
     {
         if (playerHealth.hp < playerHealth.totalHealth)
         {
             //collectSound.Play();
             playerHealth.hp += 1;
-            Collected.setHeartColor(playerHealth.hp-1, Color.white);
+            SetHeartColor(playerHealth.hp-1, Color.white);
             Destroy(heartItem);
         }
 
     }
 
-    public static void setHeartColor(int heart, Color color)
+    public static void SetHeartColor(int heart, Color color)
     {
         hearts[heart].color = color;
     }

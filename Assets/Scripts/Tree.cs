@@ -15,6 +15,7 @@ public class Tree : MonoBehaviour
     public AudioSource treeFall;
     private Transform player;
     bool burning = false;
+    public GameObject fire;
 
     private void Start()
     {
@@ -60,14 +61,14 @@ public class Tree : MonoBehaviour
         if (!burning)
         {
             burning = true;
+            fire.SetActive(true);
             StartCoroutine(BurnRoutine());
         }
     }
 
     private IEnumerator BurnRoutine()
     {
-        GetComponent<SpriteRenderer>().color = newColor;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
 }

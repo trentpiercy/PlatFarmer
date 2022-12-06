@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8154053636773579276}
   - component: {fileID: 8154053636773579277}
   - component: {fileID: 8154053636773579274}
+  - component: {fileID: 830240206194262374}
   - component: {fileID: 8154053636773579275}
   - component: {fileID: 7204275323708454911}
-  m_Layer: 7
+  m_Layer: 17
   m_Name: Beanstalk
   m_TagString: Ladder
   m_Icon: {fileID: 0}
@@ -113,6 +114,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1574396, y: 5.0502796}
   m_EdgeRadius: 0
+--- !u!114 &830240206194262374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154053636773579272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60219c6bab5f4c13a2c875075996e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: {fileID: 4495781485620617511, guid: e54484ce285baca47bedff4785d5ad64, type: 3}
 --- !u!114 &8154053636773579275
 MonoBehaviour:
   m_ObjectHideFlags: 0

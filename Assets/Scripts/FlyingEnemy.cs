@@ -9,17 +9,20 @@ public class FlyingEnemy : Enemy
     public Color newColor;
     public Transform startingPoint;
     private GameObject player;
+    private ParticleSystem particles;
     bool burning = false;
-
+    public GameObject fire;
     
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        particles = transform.parent.GetComponentInChildren<ParticleSystem>();
     }
 
     public override void Attacked()
     {
-        Debug.Log("Destroying");
+        particles.transform.position = transform.position;
+        particles.Play();
         Destroy(gameObject);
     }
 
@@ -28,14 +31,16 @@ public class FlyingEnemy : Enemy
         if (!burning)
         {
             burning = true;
+            fire.SetActive(true);
             StartCoroutine(BurnRoutine());
         }
     }
 
     private IEnumerator BurnRoutine()
     {   
-        GetComponent<SpriteRenderer>().color = newColor;
         yield return new WaitForSeconds(2);
+        particles.transform.position = transform.position;
+        particles.Play();
         Destroy(gameObject);
     }
 

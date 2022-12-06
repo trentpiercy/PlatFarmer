@@ -97,7 +97,7 @@ public class DeathCheck : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        Collected.setHeartColor(playerHealth.hp, Color.black);
+        Collected.SetHeartColor(playerHealth.hp, Color.black);
         deathSound.Play();
     }
 }

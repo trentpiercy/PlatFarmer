@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class Goomba : Enemy
 {
@@ -8,6 +9,8 @@ public class Goomba : Enemy
     public Transform rightmost;
     public Color burnColor;
     public float moveSpeed = 2f;
+    private ParticleSystem particles;
+    public GameObject fire;
 
     int direction = -1;
     Rigidbody2D rb;
@@ -18,11 +21,15 @@ public class Goomba : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         SetVelocity();
+        Debug.Assert(fire != null);
+        particles = transform.parent.GetComponentInChildren<ParticleSystem>();
     }
 
     // Called when hit by player
     public override void Attacked()
     {
+        particles.transform.position = transform.position;
+        particles.Play();
         Destroy(gameObject);
     }
 
@@ -31,14 +38,16 @@ public class Goomba : Enemy
        if (!burning)
         {
             burning = true;
+            fire.SetActive(true);
             StartCoroutine(BurnRoutine());
         }
     }
 
     private IEnumerator BurnRoutine()
     {
-        GetComponent<SpriteRenderer>().color = burnColor;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
+        particles.transform.position = transform.position;
+        particles.Play();
         Destroy(gameObject);
     }
 
