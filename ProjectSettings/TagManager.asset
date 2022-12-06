@@ -15,6 +15,7 @@ TagManager:
   - Torch
   - Sapling
   - Soil
+  - Undefined
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Sapling
   - IgnoreIgnorePlayer
   - Water
-  - 
+  - Bean
   - 
   - 
   - 

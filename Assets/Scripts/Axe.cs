@@ -5,6 +5,7 @@ using UnityEngine;
 public class Axe : MonoBehaviour
 {
     public LayerMask treesLayer;
+    public LayerMask beanLayer;
     public LayerMask enemiesLayer;
     public LayerMask saplingLayer;
 
@@ -31,6 +32,7 @@ public class Axe : MonoBehaviour
         //Debug.Log("in hitcheck");
         // Check for hitting trees
         Collider2D[] hitTrees = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, treesLayer);
+        Collider2D[] hitBeans = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, beanLayer);
         Debug.Log("in hitcheck " + hitTrees);
 
         for (int i = 0; i < hitTrees.Length; i++)
@@ -39,7 +41,12 @@ public class Axe : MonoBehaviour
             hitTrees[i].gameObject.GetComponent<Tree>().ChopTree();
             isChopping = false;
         }
-        Debug.Log("made it here");
+        for (int i = 0; i < hitBeans.Length; i++)
+        {
+            hitBeans[i].gameObject.GetComponent<ChopBean>().Fall();
+            isChopping = false;
+        }
+        
         // Check for hitting enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(chopLocation.position, chopRange, enemiesLayer);
         for (int i = 0; i < hitEnemies.Length; i++)
