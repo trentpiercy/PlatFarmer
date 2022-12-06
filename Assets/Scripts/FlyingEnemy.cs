@@ -9,6 +9,7 @@ public class FlyingEnemy : Enemy
     public Color newColor;
     public Transform startingPoint;
     private GameObject player;
+    public ParticleSystem particles;
     bool burning = false;
 
     
@@ -19,7 +20,8 @@ public class FlyingEnemy : Enemy
 
     public override void Attacked()
     {
-        Debug.Log("Destroying");
+        particles.transform.position = transform.position;
+        particles.Play();
         Destroy(gameObject);
     }
 
