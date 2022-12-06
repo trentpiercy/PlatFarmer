@@ -9,6 +9,7 @@ public class CameraGrow : MonoBehaviour
 
     public float zoomSpeed = 6;
     public float normalSize = 8;
+    public float maxSize = 11;
 
     private Camera cam;
 
@@ -22,9 +23,9 @@ public class CameraGrow : MonoBehaviour
         if (GetComponent<Collider2D>().IsTouchingLayers(playerLayer))
         {
             cam.orthographicSize += zoomSpeed * Time.deltaTime;
-            if (cam.orthographicSize > 11)
+            if (cam.orthographicSize > maxSize)
             {
-                cam.orthographicSize = 11; // Max size
+                cam.orthographicSize = maxSize; // Max size
             }
         }
         else

@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Legal.unity
     guid: e3945603a4eb5468c945d16358282e23
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: bc0ce69f98ad14608aee60cc552724f2
   m_configObjects: {}
