@@ -9,7 +9,7 @@ public class Gem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Collected.gemCollected();
+            Collected.GemCollected();
             Destroy(gameObject);
         }
     }
