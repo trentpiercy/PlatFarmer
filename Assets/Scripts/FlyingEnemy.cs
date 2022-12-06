@@ -11,7 +11,7 @@ public class FlyingEnemy : Enemy
     private GameObject player;
     private ParticleSystem particles;
     bool burning = false;
-
+    public GameObject fire;
     
     void Start()
     {
@@ -31,13 +31,13 @@ public class FlyingEnemy : Enemy
         if (!burning)
         {
             burning = true;
+            fire.SetActive(true);
             StartCoroutine(BurnRoutine());
         }
     }
 
     private IEnumerator BurnRoutine()
     {   
-        GetComponent<SpriteRenderer>().color = newColor;
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }

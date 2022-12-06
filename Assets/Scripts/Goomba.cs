@@ -8,6 +8,7 @@ public class Goomba : Enemy
     public Transform rightmost;
     public Color burnColor;
     public float moveSpeed = 2f;
+    public GameObject fire;
 
     int direction = -1;
     Rigidbody2D rb;
@@ -18,6 +19,7 @@ public class Goomba : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         SetVelocity();
+        Debug.Assert(fire != null);
     }
 
     // Called when hit by player
@@ -31,14 +33,14 @@ public class Goomba : Enemy
        if (!burning)
         {
             burning = true;
+            fire.SetActive(true);
             StartCoroutine(BurnRoutine());
         }
     }
 
     private IEnumerator BurnRoutine()
     {
-        GetComponent<SpriteRenderer>().color = burnColor;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
 
