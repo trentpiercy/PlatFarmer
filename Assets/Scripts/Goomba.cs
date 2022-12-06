@@ -46,6 +46,8 @@ public class Goomba : Enemy
     private IEnumerator BurnRoutine()
     {
         yield return new WaitForSeconds(2);
+        particles.transform.position = transform.position;
+        particles.Play();
         Destroy(gameObject);
     }
 
