@@ -9,7 +9,7 @@ public class Heart : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Collected.gainLife(gameObject);
+            Collected.GainLife(gameObject);
         }
     }
 }
