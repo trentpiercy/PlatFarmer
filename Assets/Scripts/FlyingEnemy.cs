@@ -9,13 +9,14 @@ public class FlyingEnemy : Enemy
     public Color newColor;
     public Transform startingPoint;
     private GameObject player;
-    public ParticleSystem particles;
+    private ParticleSystem particles;
     bool burning = false;
 
     
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        particles = transform.parent.GetComponentInChildren<ParticleSystem>();
     }
 
     public override void Attacked()
