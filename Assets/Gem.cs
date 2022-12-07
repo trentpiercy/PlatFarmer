@@ -13,7 +13,7 @@ public class Gem : MonoBehaviour
         {
             collectSound.Play();
             Debug.Log("Collected gem");
-            Collected.gemCollected();
+            Collected.GemCollected();
             Destroy(gameObject);
         }
     }

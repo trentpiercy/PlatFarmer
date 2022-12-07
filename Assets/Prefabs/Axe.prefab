@@ -195,6 +195,9 @@ MonoBehaviour:
   treesLayer:
     serializedVersion: 2
     m_Bits: 8
+  beanLayer:
+    serializedVersion: 2
+    m_Bits: 0
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 4096

@@ -13,7 +13,7 @@ public class Heart : MonoBehaviour
         {
             Debug.Log("Collected heart");
 
-            Collected.gainLife(gameObject);
+            Collected.GainLife(gameObject);
             collectSound.Play();
         }
     }
