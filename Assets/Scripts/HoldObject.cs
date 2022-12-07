@@ -12,10 +12,26 @@ public class HoldObject : MonoBehaviour
     public LayerMask itemLayerMask;
     public LayerMask waterLayerMask;
     public AudioSource collectSound;
+    public AudioSource splashSound;
     public SpriteRenderer waterCan;
+    private bool inWater = false;
 
     void Update()
     {
+        if (waterCheck.IsTouchingLayers(waterLayerMask))
+        {
+            //Debug.Log("in water");
+            if (!inWater)
+            {
+                splashSound.Play();
+                inWater = true;
+            }
+            else
+            {
+                inWater = false;
+            }
+            
+        }
         if (heldItem == null)
         {
             // No held item
@@ -82,6 +98,7 @@ public class HoldObject : MonoBehaviour
             else if (Binds.pickupDrop() && waterCheck.IsTouchingLayers(waterLayerMask))
             {
                 Debug.Log("trying to pick up water");
+                collectSound.Play();
                 heldItem = Instantiate(waterDrop);
                 heldItem.transform.position = playerHands.transform.position;
                 heldItem.transform.parent = playerHands.transform;
