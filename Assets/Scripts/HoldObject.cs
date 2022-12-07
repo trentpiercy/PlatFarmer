@@ -31,7 +31,7 @@ public class HoldObject : MonoBehaviour
                 heldItem = items[0].gameObject;
                 heldItem = heldItem.transform.parent.gameObject;
                 heldItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-                collectSound.Play();
+                // collectSound.Play();
 
                 if (heldItem.CompareTag("Axe") || heldItem.CompareTag("Torch"))
                 {
