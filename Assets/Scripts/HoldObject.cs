@@ -14,24 +14,9 @@ public class HoldObject : MonoBehaviour
     public AudioSource collectSound;
     public AudioSource splashSound;
     public SpriteRenderer waterCan;
-    private bool inWater = false;
 
     void Update()
     {
-        if (waterCheck.IsTouchingLayers(waterLayerMask))
-        {
-            //Debug.Log("in water");
-            if (!inWater)
-            {
-                splashSound.Play();
-                inWater = true;
-            }
-            else
-            {
-                inWater = false;
-            }
-            
-        }
         if (heldItem == null)
         {
             // No held item
@@ -159,5 +144,13 @@ public class HoldObject : MonoBehaviour
         waterCan.enabled = true;
         yield return new WaitForSeconds(0.5f);
         waterCan.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            splashSound.Play();
+        }
     }
 }
