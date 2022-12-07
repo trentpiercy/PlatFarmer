@@ -15,7 +15,8 @@ public class Collected : MonoBehaviour
     public Image[] setGems;
     static Image[] hearts;
     public Image[] setHearts;
-    //static AudioSource collectSound;
+    public AudioSource setCollectSound;
+    static AudioSource collectSound;
 
     public string setWinScene;
     static string winScene;
@@ -26,11 +27,12 @@ public class Collected : MonoBehaviour
         gems = setGems;
         playerHealth = setPlayerHealth;
         winScene = setWinScene;
+        collectSound = setCollectSound;
     }
 
     public static void GemCollected()
     {
-        //collectSound.Play();
+        collectSound.Play();
         gems[numCollected].color = Color.white;
         numCollected++;
 
@@ -44,7 +46,7 @@ public class Collected : MonoBehaviour
     {
         if (playerHealth.hp < playerHealth.totalHealth)
         {
-            //collectSound.Play();
+            collectSound.Play();
             playerHealth.hp += 1;
             SetHeartColor(playerHealth.hp-1, Color.white);
             Destroy(heartItem);

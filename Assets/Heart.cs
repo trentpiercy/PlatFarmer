@@ -5,7 +5,6 @@ using TMPro;
 
 public class Heart : MonoBehaviour
 {
-    public AudioSource collectSound;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,7 +13,6 @@ public class Heart : MonoBehaviour
             Debug.Log("Collected heart");
 
             Collected.GainLife(gameObject);
-            collectSound.Play();
         }
     }
 }
