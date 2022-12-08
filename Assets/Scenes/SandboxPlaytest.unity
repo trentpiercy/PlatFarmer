@@ -80565,7 +80565,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8515975177046562032, guid: 9b843d44b322d43e08ae65abe95f2dd2, type: 3}
       propertyPath: setWinScene
-      value: You Win
+      value: Win Screen
       objectReference: {fileID: 0}
     - target: {fileID: 8515975177046562032, guid: 9b843d44b322d43e08ae65abe95f2dd2, type: 3}
       propertyPath: setCollectSound
@@ -81458,7 +81458,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.74509805}
   m_Origin: {x: -22, y: -16, z: 0}
   m_Size: {x: 120, y: 30, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
