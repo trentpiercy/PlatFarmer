@@ -21,11 +21,15 @@ public class Torch : MonoBehaviour
 
     private bool isUsing = false;
     public AudioSource useTorch;
+    public Vector3 initialScale;
+    public Quaternion initialRotation;
 
-    private void Start()
+    private void Awake()
     {
-        enabled = false;
         swingLocation = transform;
+        initialRotation = transform.rotation;
+        initialScale = transform.localScale;
+        enabled = false;
     }
 
     private void HitCheck()

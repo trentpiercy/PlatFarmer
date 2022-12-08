@@ -35,28 +35,37 @@ public class HoldObject : MonoBehaviour
 
                 if (heldItem.CompareTag("Axe") || heldItem.CompareTag("Torch"))
                 {
+                    Vector3 initialScale;
+
                     if (heldItem.CompareTag("Axe"))
                     {
-                        heldItem.GetComponent<Axe>().enabled = true;
+                        var axe = heldItem.GetComponent<Axe>();
+                        axe.enabled = true;
+                        // Reset rotation
+                        heldItem.transform.rotation = axe.initialRotation;
+                        initialScale = axe.initialScale;
                     }
                     else
                     {
-                        heldItem.GetComponent<Torch>().enabled = true;
+                        var torch = heldItem.GetComponent<Torch>();
+                        torch.enabled = true;
+                        heldItem.transform.rotation = torch.initialRotation;
+                        initialScale = torch.initialScale;
                     }
 
-                    bool playerFaceForward = playerHands.transform.position.x > playerHands.transform.parent.position.x;
-                    bool axAheadPlayer = heldItem.transform.position.x > playerHands.transform.parent.position.x;
-                    if (playerFaceForward)
+                    heldItem.transform.position = playerHands.transform.position;
+
+                    // Invert scale if player is facing left
+                    if (playerHands.transform.position.x > transform.position.x)
                     {
-                        heldItem.transform.position = playerHands.transform.position;
-                        //heldItem.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                        //Debug.Log("player forward " + heldItem.transform.localScale);
+                        Debug.Log("player face right");
+                        heldItem.transform.localScale = initialScale;
                     }
                     else
                     {
-                        heldItem.transform.position = playerHands.transform.position;
-                        //heldItem.transform.localScale = new Vector3(-0.5f, -0.5f, 0.5f);
-                        //Debug.Log("player backward " + heldItem.transform.localScale);
+                        Debug.Log("player face left");
+                        initialScale.y = -initialScale.y;
+                        heldItem.transform.localScale = initialScale;
                     }
                 }
                 else if (heldItem.CompareTag("Log"))

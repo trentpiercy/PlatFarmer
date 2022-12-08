@@ -27,6 +27,16 @@ public class Axe : MonoBehaviour
     private bool isCoolingdown = false;
     public AudioSource chopSound;
 
+    public Vector3 initialScale;
+    public Quaternion initialRotation;
+
+    private void Awake()
+    {
+        initialRotation = transform.rotation;
+        initialScale = transform.localScale;
+        enabled = false;
+    }
+
     private void HitCheck()
     {
         //Debug.Log("in hitcheck");
