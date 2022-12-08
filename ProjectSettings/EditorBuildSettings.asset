@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: bc0ce69f98ad14608aee60cc552724f2
   - enabled: 1
+    path: Assets/Scenes/Legal.unity
+    guid: d3480061d659141608154c78e4cb9aca
+  - enabled: 1
     path: Assets/Scenes/SandboxPlaytest.unity
     guid: 80807f16b1d7d9f47a53066175b9c7da
   - enabled: 1
